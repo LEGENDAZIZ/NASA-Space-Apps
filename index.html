@@ -699,6 +699,103 @@ tr.sel td { background: var(--cyan-soft); }
 }
 @media (prefers-reduced-motion: reduce) { .winbtn.nudge, .bubble.pop, .flash.go { animation: none; } .cabshot { transition: none; } }
 
+/* ---------- comfort update: back button, phone menu, bars that stay on screen ---------- */
+.backbtn { gap: 4px; padding-left: 10px; }
+.backbtn svg { width: 22px; height: 22px; }
+.topgroup { display: contents; }
+.menubtn { display: none; width: 46px; height: 46px; padding: 0; justify-content: center; }
+.menubtn svg { width: 26px; height: 26px; }
+.menupop h3 { margin-bottom: 4px; }
+.menupop .mrow { display: grid; gap: 6px; padding: 10px 0; border-bottom: 2px solid #F0EEFB; }
+.menupop .mrow > span { font-weight: 900; font-size: 14px; color: var(--muted); }
+.menupop .mode-pill { background: var(--soft); border-color: #E4E1FA; justify-self: start; }
+.menupop .mode-pill button { color: var(--ink); }
+.menupop .langrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.menupop .langrow .langopt { width: auto; padding: 8px 12px; font-size: 15px; background: #fff; color: var(--ink); border-color: #E4E1FA; }
+.menupop .langrow .langopt.on { background: var(--yellow); border-color: var(--yellow); color: #3A2600; }
+.menupop .toggle { justify-self: start; }
+.menupop .mlinks { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 0 4px; }
+.menupop .mlinks svg { width: 18px; height: 18px; }
+.leavecard { width: min(460px, 100%); display: grid; gap: 12px; }
+.leavecard .row { flex-wrap: wrap; gap: 8px; }
+.btn.ghostdark { background: var(--soft); color: var(--ink); --cd: #CFCBEF; }
+.btn svg { flex: none; }
+.launchbar { position: sticky; bottom: max(10px, env(safe-area-inset-bottom, 0px)); z-index: 15; align-items: center; justify-content: flex-start; gap: 10px; margin-top: 14px; padding: 10px; border-radius: 20px;
+  background: rgba(11,15,46,.9); border: 2px solid rgba(255,255,255,.16); box-shadow: 0 10px 30px rgba(0,0,0,.45); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.launchbar .grow { flex: 1; }
+.launchbar svg { width: 20px; height: 20px; }
+.launchbar .nextbtn { gap: 6px; }
+.launchbar .prevbtn span { max-width: 9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.speedseg { display: inline-flex; gap: 4px; padding: 4px; border-radius: 16px; background: rgba(20,16,70,.7); border: 2px solid rgba(255,255,255,.15); }
+.speedseg button { display: grid; justify-items: center; gap: 1px; min-width: 56px; padding: 6px 8px 5px; border: 0; border-radius: 12px; background: transparent; color: #DAD7FF; font: 800 12px/1 Nunito, sans-serif; cursor: pointer; }
+.speedseg button svg { width: 20px; height: 20px; }
+.speedseg button:hover { background: rgba(255,255,255,.1); }
+.speedseg button.on { background: var(--yellow); color: #3A2600; }
+.winbtn svg { width: 26px; height: 26px; }
+.winbtn.wait { filter: saturate(.35); opacity: .75; animation: none; cursor: default; }
+@media (max-width: 760px) {
+  .wideonly { display: none !important; }
+  .menubtn { display: inline-flex; }
+  .top { flex-wrap: nowrap; gap: 8px; }
+  .top .where { display: none; }
+  .brand span { font-size: 18px; }
+}
+@media (max-width: 560px) {
+  .backbtn span { display: none; } .backbtn { width: 46px; height: 46px; padding: 0; justify-content: center; }
+  .brand { min-width: 0; } .brand span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* workshop: small meter tiles so the choices come first */
+  .side h3, .side .tiny { display: none; }
+  .meters, .meters.flat { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .meter { grid-template-columns: 1fr; row-gap: 4px; padding: 6px 6px 7px; border-left-width: 4px; }
+  .meter .mi { grid-row: auto; width: 26px; height: 26px; border-radius: 8px; } .meter .mi svg { width: 18px; height: 18px; }
+  .meter small { display: none; }
+  .mn b { font-size: 13px; } .mn em { font-size: 10.5px; }
+  .stepbar { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; overflow: visible; padding: 4px 0 8px; }
+  .step { padding: 6px 2px 5px; border-radius: 12px; min-width: 0; }
+  .step svg { width: 24px; height: 24px; }
+  .step b { font: 800 10.5px/1.1 Nunito, sans-serif; letter-spacing: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .step small { display: none; }
+  .step i { top: 3px; right: 3px; width: 10px; height: 10px; }
+  .launchbar { flex-wrap: wrap; gap: 8px; padding: 8px; }
+  .launchbar .grow { display: none; }
+  .launchbar .prevbtn, .launchbar .savebtn { width: 48px; padding: 0; justify-content: center; }
+  .launchbar .prevbtn span, .launchbar .savebtn span { display: none; }
+  .launchbar .nextbtn { flex: 1; justify-content: center; }
+  .launchbar .launchbtn { flex-basis: 100%; justify-content: center; }
+  .controls .winbtn { flex-basis: 100%; justify-content: center; }
+  .speedseg { flex: 1; } .speedseg button { flex: 1; min-width: 0; }
+}
+/* the top bar gets a solid strip so page text never shows through it */
+.top { background: rgba(11,15,46,.86); box-shadow: 0 0 0 100vmax rgba(11,15,46,.86); clip-path: inset(0 -100vmax); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+#steps, #panel, .stage { scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 84px); }
+@media (max-width: 560px) {
+  .hangar svg.craft { max-height: 170px; }
+  .orbi-box > svg { width: 60px; height: 60px; flex: none; }
+  .launchbar .btn { padding-top: 9px; padding-bottom: 8px; }
+}
+@media (max-width: 560px) { .backbtn ~ .brand span { display: none; } .backbtn ~ .brand { padding: 4px; } }
+.launchbar .btn[disabled] { opacity: .5; filter: saturate(.4); }
+@media (max-width: 560px) { .launchbar .btn.green { flex: 1; justify-content: center; } }
+@media (max-width: 560px) { .step b { font-size: 10px; letter-spacing: -.01em; white-space: normal; text-overflow: clip; overflow-wrap: anywhere; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; text-align: center; } }
+.on-space.muted, .on-space .muted { text-shadow: 0 2px 6px rgba(11,15,46,.9); }
+/* ---------- quiz: topics, progress dots, did-you-know ---------- */
+.topics { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.topicchip { border: 2px solid rgba(255,255,255,.22); background: rgba(20,16,70,.65); color: #fff; border-radius: 99px; padding: 8px 14px; font: 800 14px/1.1 Nunito, sans-serif; cursor: pointer; }
+.topicchip:hover { border-color: rgba(255,255,255,.5); }
+.topicchip[aria-pressed="true"] { background: var(--yellow); color: #3A2600; border-color: var(--yellow); }
+.card .topicchip { background: var(--soft); color: var(--ink); border-color: #E4E1FA; }
+.card .topicchip[aria-pressed="true"] { background: var(--yellow); border-color: var(--yellow); color: #3A2600; }
+.qdots { display: flex; gap: 8px; justify-content: center; }
+.qdots i { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,.2); border: 2px solid rgba(255,255,255,.35); }
+.qdots i.done { background: var(--green); border-color: var(--green); }
+.qdots i.now { background: var(--yellow); border-color: var(--yellow); transform: scale(1.2); }
+.qfact { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; background: var(--warn-soft); border: 3px solid var(--yellow); }
+.qfact svg { width: 40px; height: 40px; }
+.qfact b { font: 400 20px/1.1 var(--f-display); color: var(--yellow-d); }
+.qfact p { margin-top: 4px; font-weight: 700; line-height: 1.4; }
+.quiz .card .big { overflow-wrap: anywhere; text-align: center; }
+@media (max-width: 560px) { .quiz .card .big { font-size: 22px; } .bigstars svg { width: 44px; height: 44px; } }
+
 </style>
 </head><body><canvas id="bg" aria-hidden="true"></canvas>
 <div class="app" id="app"></div>
@@ -2675,6 +2772,11 @@ const I = {
   sound: `<path d="M4 9.5h4l5-4v13l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>`,
   mute: `<path d="M4 9.5h4l5-4v13l-5-4H4z" fill="currentColor"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`,
   home: `<path d="M3.5 11.5L12 4l8.5 7.5M6 10v9.5h4.5V15h3v4.5H18V10" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+  back: `<path d="M14.5 5.5L8 12l6.5 6.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+  next: `<path d="M9.5 5.5L16 12l-6.5 6.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+  save: `<path d="M5 4h11l3 3v13H5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 4v5h7V4M8 20v-6h8v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>`,
+  menu: `<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>`,
+  window: `<circle cx="12" cy="12" r="8.5" fill="#2EC5FF" stroke="currentColor" stroke-width="2"/><path d="M6 15c3-4 6-1 9-4s3 1 3 1" stroke="#5ED37A" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M8 8a6 6 0 0 1 4-2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/>`,
 };
 ART.icon = (k, cls = '') => `<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true">${I[k] || I.dot}</svg>`;
 
@@ -2947,42 +3049,155 @@ ART.sfx = {
   win: () => [392, 523, 659, 784, 1046, 1318].forEach((f, i) => tone(f, 0.25, 'triangle', 0.1, i * 0.1)),
 };
 /* =====================================================================
-   Background music: a small synthesized space tune (no audio files)
-   Chords C - Am - F - G, soft pad, bass, arpeggio, sparkles and a melody.
-   "calm" for menus and building, "adventure" (adds a soft beat) for flight.
+   Background music: synthesized space music (no audio files)
+   "calm"  (menus, building, the cabin window): "Orbit Lullaby", a slow dreamy
+           piece: soft pads, echoing bells, gentle plucks, lots of space.
+   "adventure" (flight): "Mission Control", a heroic theme in D minor with a
+           driving bass, soft drums and a brass-like melody.
+   Everything plays through a shared reverb and echo so it sounds like space.
    ===================================================================== */
-const MUS = { on: false, mood: 'calm', timer: null, next: 0, step: 0, bus: null, bars: 0, vol: 0.7 };
+const MUS = { on: false, mood: 'calm', playing: 'calm', timer: null, next: 0, step: 0, bus: null, rev: null, echo: null, vol: 0.7, cycle: 0 };
 const mtof = n => 440 * Math.pow(2, (n - 69) / 12);
-const CHORDS = [[60, 64, 67], [57, 60, 64], [53, 57, 60], [55, 59, 62]];
-const MELODY = [
-  [72, 0, 76, 0, 79, 0, 76, 74], [76, 0, 72, 0, 69, 0, 72, 0],
-  [77, 0, 76, 0, 72, 0, 69, 72], [74, 0, 79, 0, 77, 76, 74, 0],
-];
-const ARP = [0, 1, 2, 1, 3, 2, 1, 2];
-function note(a, f, t, dur, type, vol, attack = 0.01, release = 0.25, dest = MUS.bus) {
-  const o = a.createOscillator(), g = a.createGain();
-  o.type = type; o.frequency.setValueAtTime(f, t);
-  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + attack);
-  g.gain.setValueAtTime(vol, t + Math.max(attack, dur - release)); g.gain.exponentialRampToValueAtTime(0.0001, t + dur + release);
-  o.connect(g).connect(dest); o.start(t); o.stop(t + dur + release + 0.05);
+function makeBus(a) {
+  const out = a.createGain(), comp = a.createDynamicsCompressor();
+  comp.threshold.value = -18; comp.ratio.value = 3; comp.attack.value = 0.02; comp.release.value = 0.3;
+  out.connect(comp).connect(a.destination);
+  // reverb: a long soft tail made from fading noise
+  const len = Math.floor(a.sampleRate * 3.2), ir = a.createBuffer(2, len, a.sampleRate);
+  for (let c = 0; c < 2; c++) { const d = ir.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2); }
+  const conv = a.createConvolver(); conv.buffer = ir; const revIn = a.createGain(); revIn.gain.value = 1; const revOut = a.createGain(); revOut.gain.value = 0.55;
+  revIn.connect(conv).connect(revOut).connect(out);
+  // echo: soft repeats that get darker each time
+  const echoIn = a.createGain(), dl = a.createDelay(2), fb = a.createGain(), lp = a.createBiquadFilter(), echoOut = a.createGain();
+  lp.type = 'lowpass'; lp.frequency.value = 2400; fb.gain.value = 0.38; echoOut.gain.value = 0.5;
+  echoIn.connect(dl); dl.connect(lp).connect(fb).connect(dl); lp.connect(echoOut).connect(out); echoOut.connect(revIn);
+  MUS.bus = out; MUS.rev = revIn; MUS.echo = echoIn; MUS.delay = dl;
 }
-function kick(a, t) { const o = a.createOscillator(), g = a.createGain(); o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.18); g.gain.setValueAtTime(0.5, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.25); o.connect(g).connect(MUS.bus); o.start(t); o.stop(t + 0.3); }
-function hat(a, t) { const len = 0.05, b = a.createBuffer(1, Math.ceil(a.sampleRate * len), a.sampleRate), dd = b.getChannelData(0); for (let i = 0; i < dd.length; i++) dd[i] = (Math.random() * 2 - 1) * (1 - i / dd.length); const s = a.createBufferSource(); s.buffer = b; const f = a.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 7000; const g = a.createGain(); g.gain.value = 0.12; s.connect(f).connect(g).connect(MUS.bus); s.start(t); }
+// send a sound to the dry mix plus some reverb and echo
+function route(node, dry, rev, echo) {
+  const a = actx;
+  if (dry) { const g = a.createGain(); g.gain.value = dry; node.connect(g).connect(MUS.bus); }
+  if (rev) { const g = a.createGain(); g.gain.value = rev; node.connect(g).connect(MUS.rev); }
+  if (echo) { const g = a.createGain(); g.gain.value = echo; node.connect(g).connect(MUS.echo); }
+}
+function env(g, t, vol, att, hold, rel) {
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + att);
+  g.gain.setValueAtTime(vol, t + att + hold); g.gain.exponentialRampToValueAtTime(0.0001, t + att + hold + rel);
+  return t + att + hold + rel + 0.05;
+}
+// warm pad: two detuned saws through a slowly opening filter
+function pad(a, n, t, dur, vol, bright = 1100) {
+  const f = a.createBiquadFilter(); f.type = 'lowpass'; f.Q.value = 0.7;
+  f.frequency.setValueAtTime(bright * 0.55, t); f.frequency.linearRampToValueAtTime(bright, t + dur * 0.5); f.frequency.linearRampToValueAtTime(bright * 0.6, t + dur + 1.5);
+  // linear fade-in and a long hold so chords melt into each other with no gap
+  const g = a.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + 0.9); g.gain.setValueAtTime(vol, t + dur + 0.3); g.gain.linearRampToValueAtTime(0, t + dur + 2.4); const end = t + dur + 2.5;
+  [-7, 7].forEach(dt => { const o = a.createOscillator(); o.type = 'sawtooth'; o.frequency.value = mtof(n); o.detune.value = dt; o.connect(f); o.start(t); o.stop(end); });
+  const s = a.createOscillator(); s.type = 'sine'; s.frequency.value = mtof(n - 12); const sg = a.createGain(); sg.gain.value = 0.6; s.connect(sg).connect(f); s.start(t); s.stop(end);
+  f.connect(g); route(g, 0.7, 0.6, 0);
+}
+// bell: a little FM synth, like a glass chime
+function bell(a, n, t, vol, decay = 2.4, echo = 0.45) {
+  const car = a.createOscillator(), mod = a.createOscillator(), mg = a.createGain(), g = a.createGain();
+  car.type = 'sine'; car.frequency.value = mtof(n); mod.type = 'sine'; mod.frequency.value = mtof(n) * 3.5;
+  mg.gain.setValueAtTime(mtof(n) * 2.2, t); mg.gain.exponentialRampToValueAtTime(mtof(n) * 0.05, t + decay * 0.6);
+  mod.connect(mg).connect(car.frequency); car.connect(g);
+  const end = env(g, t, vol, 0.008, 0.02, decay); car.start(t); mod.start(t); car.stop(end); mod.stop(end);
+  route(g, 0.8, 0.5, echo);
+}
+// pluck: soft harp-like note
+function pluck(a, n, t, vol, echo = 0.25) {
+  const o = a.createOscillator(), f = a.createBiquadFilter(), g = a.createGain();
+  o.type = 'triangle'; o.frequency.value = mtof(n); f.type = 'lowpass'; f.frequency.setValueAtTime(3200, t); f.frequency.exponentialRampToValueAtTime(500, t + 0.5);
+  o.connect(f).connect(g); const end = env(g, t, vol, 0.005, 0.01, 0.9); o.start(t); o.stop(end); route(g, 0.8, 0.35, echo);
+}
+// brass-like lead for the flight theme
+function brass(a, n, t, dur, vol) {
+  const f = a.createBiquadFilter(), g = a.createGain(); f.type = 'lowpass'; f.Q.value = 2;
+  f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(2600, t + 0.08); f.frequency.exponentialRampToValueAtTime(1300, t + dur);
+  const end = env(g, t, vol, 0.05, Math.max(0.05, dur - 0.1), 0.35);
+  [-5, 5].forEach(dt => { const o = a.createOscillator(); o.type = 'sawtooth'; o.frequency.value = mtof(n); o.detune.value = dt;
+    const vib = a.createOscillator(), vg = a.createGain(); vib.frequency.value = 5.2; vg.gain.setValueAtTime(0, t); vg.gain.linearRampToValueAtTime(6, t + dur); vib.connect(vg).connect(o.detune); vib.start(t); vib.stop(end);
+    o.connect(f); o.start(t); o.stop(end); });
+  f.connect(g); route(g, 0.7, 0.45, 0.2);
+}
+function bass(a, n, t, dur, vol) {
+  const o = a.createOscillator(), o2 = a.createOscillator(), f = a.createBiquadFilter(), g = a.createGain();
+  o.type = 'sine'; o.frequency.value = mtof(n); o2.type = 'triangle'; o2.frequency.value = mtof(n);
+  f.type = 'lowpass'; f.frequency.value = 700; o.connect(g); o2.connect(f).connect(g);
+  const end = env(g, t, vol, 0.01, dur * 0.6, dur * 0.5 + 0.1); o.start(t); o2.start(t); o.stop(end); o2.stop(end); route(g, 1, 0.05, 0);
+}
+function noise(a, dur) { const b = a.createBuffer(1, Math.ceil(a.sampleRate * dur), a.sampleRate), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; const s = a.createBufferSource(); s.buffer = b; return s; }
+function kick(a, t, vol = 0.55) { const o = a.createOscillator(), g = a.createGain(); o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(40, t + 0.16); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3); o.connect(g); o.start(t); o.stop(t + 0.32); route(g, 1, 0, 0); }
+function snare(a, t, vol = 0.16) { const s = noise(a, 0.2), f = a.createBiquadFilter(), g = a.createGain(); f.type = 'bandpass'; f.frequency.value = 1800; f.Q.value = 0.8; s.connect(f).connect(g); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.18); s.start(t); route(g, 0.9, 0.35, 0); }
+function hat(a, t, vol = 0.05) { const s = noise(a, 0.05), f = a.createBiquadFilter(), g = a.createGain(); f.type = 'highpass'; f.frequency.value = 7500; s.connect(f).connect(g); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.045); s.start(t); route(g, 1, 0.1, 0); }
+function timpani(a, n, t, vol = 0.35) { const o = a.createOscillator(), g = a.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(mtof(n) * 1.06, t); o.frequency.exponentialRampToValueAtTime(mtof(n), t + 0.08); const end = env(g, t, vol, 0.005, 0.02, 1.2); o.connect(g); o.start(t); o.stop(end); route(g, 0.9, 0.5, 0); }
+function shimmer(a, t, base) { [0, 7, 12, 19].forEach((iv, i) => bell(a, base + iv, t + i * 0.09, 0.012, 1.6, 0.3)); }
+
+/* ---- "Orbit Lullaby": 4 chords x 2 bars, 16 eighth notes per chord ---- */
+const CALM = {
+  bpm: 70,
+  chords: [ // [bass, pad notes...]
+    [41, 57, 60, 64, 71], // Fmaj7(#11)
+    [36, 55, 59, 62, 64], // Cmaj9
+    [45, 55, 60, 64, 71], // Am9
+    [43, 55, 60, 62, 67], // Gsus4
+  ],
+  bells: [
+    [76, 0, 0, 79, 0, 0, 81, 0, 0, 0, 79, 0, 76, 0, 0, 0],
+    [74, 0, 0, 76, 0, 0, 79, 0, 83, 0, 81, 0, 79, 0, 0, 0],
+    [72, 0, 0, 76, 0, 0, 79, 0, 0, 0, 76, 0, 74, 0, 72, 0],
+    [74, 0, 0, 0, 79, 0, 0, 0, 81, 0, 79, 0, 74, 0, 0, 0],
+  ],
+  bells2: [
+    [81, 0, 79, 0, 76, 0, 0, 0, 79, 0, 81, 0, 84, 0, 0, 0],
+    [83, 0, 81, 0, 79, 0, 0, 0, 76, 0, 79, 0, 74, 0, 0, 0],
+    [84, 0, 0, 83, 0, 0, 79, 0, 0, 0, 76, 0, 79, 0, 0, 0],
+    [81, 0, 0, 79, 0, 0, 74, 0, 72, 0, 74, 0, 79, 0, 0, 0],
+  ],
+  arp: [0, 1, 2, 3, 2, 1, 2, 3, 0, 1, 2, 3, 4, 3, 2, 1],
+};
+/* ---- "Mission Control": Dm - Bb - F - C, 2 bars each ---- */
+const ADV = {
+  bpm: 104,
+  chords: [
+    [38, 62, 65, 69], // Dm
+    [34, 62, 65, 70], // Bb
+    [41, 60, 65, 69], // F
+    [36, 60, 64, 67], // C
+  ],
+  lead: [
+    [74, 0, 0, 0, 72, 0, 74, 0, 77, 0, 0, 0, 76, 0, 74, 0],
+    [74, 0, 0, 0, 0, 0, 70, 0, 72, 0, 74, 0, 77, 0, 0, 0],
+    [81, 0, 0, 0, 79, 0, 77, 0, 76, 0, 77, 0, 79, 0, 0, 0],
+    [76, 0, 0, 0, 0, 0, 72, 0, 74, 0, 76, 0, 79, 0, 0, 0],
+  ],
+  arp: [0, 1, 2, 3, 1, 2, 3, 2, 0, 1, 2, 3, 1, 2, 3, 2],
+};
 function schedule() {
   const a = actx; if (!a || !MUS.on) return;
-  const adv = MUS.mood === 'adventure', beat = 60 / (adv ? 104 : 88), eighth = beat / 2;
-  while (MUS.next < a.currentTime + 0.25) {
-    const t = MUS.next, st = MUS.step % 8, bar = Math.floor(MUS.step / 8) % 4, ch = CHORDS[bar];
-    if (st === 0) {
-      ch.forEach(n => { note(a, mtof(n), t, beat * 4, 'sine', 0.05, 0.6, 1.2); note(a, mtof(n) * 1.004, t, beat * 4, 'triangle', 0.025, 0.8, 1.2); });
-      MUS.bars++;
+  while (MUS.next < a.currentTime + 0.3) {
+    // switch pieces at the next chord change, starting the new piece from its beginning
+    if (MUS.step % 16 === 0 && MUS.playing !== MUS.mood) { MUS.playing = MUS.mood; MUS.step = 0; MUS.cycle = -1; }
+    const t = MUS.next, step = MUS.step % 64, ci = Math.floor(step / 16), s16 = step % 16;
+    if (step === 0) MUS.cycle++;
+    const adv = MUS.playing === 'adventure', P = adv ? ADV : CALM, eighth = 60 / P.bpm / 2, ch = P.chords[ci], sec = MUS.cycle % 4;
+    if (!adv) {
+      if (s16 === 0) { ch.slice(1).forEach(n => pad(a, n, t, eighth * 16, 0.022)); bass(a, ch[0], t, eighth * 6, 0.16); }
+      if (s16 === 8) bass(a, ch[0] + 12, t, eighth * 4, 0.08);
+      if (sec >= 1 && s16 % 2 === 0) { const nn = ch[1 + (P.arp[s16] % (ch.length - 1))] + 12; pluck(a, nn, t, 0.045); }
+      if (sec >= 2) { const m = (sec === 3 ? P.bells2 : P.bells)[ci][s16]; if (m) bell(a, m, t, 0.05); }
+      if (step === 0 && MUS.cycle % 2 === 0) shimmer(a, t + eighth * 2, 84);
+      if (Math.random() < 0.035) bell(a, [84, 86, 88, 91, 93, 96][Math.floor(Math.random() * 6)], t, 0.018, 2.8, 0.6);
+    } else {
+      if (s16 === 0) { ch.slice(1).forEach(n => pad(a, n, t, eighth * 16, 0.02, 1700)); if (ci === 0) timpani(a, 38, t, 0.32); }
+      const bn = ch[0] + (s16 % 4 === 2 ? 12 : 0); bass(a, bn, t, eighth * 0.8, 0.13);
+      if (sec >= 1) { const nn = ch[1 + (P.arp[s16] % (ch.length - 1))] + 12; pluck(a, nn, t, 0.035, 0.15); }
+      if (sec >= 2) { const m = P.lead[ci][s16]; if (m) { let len = 1; while (len < 6 && !P.lead[ci][s16 + len] && s16 + len < 16) len++; brass(a, m, t, eighth * len * 0.95, 0.03); } }
+      if (s16 % 4 === 0) kick(a, t, 0.42); if (s16 === 10) kick(a, t, 0.25);
+      if (s16 % 8 === 4) snare(a, t, 0.12);
+      if (s16 % 2 === 1) hat(a, t, 0.035);
+      if (step === 60) [0, 1, 2, 3].forEach(i => timpani(a, 38 + (i % 2) * 7, t + i * eighth * 0.5, 0.12 + i * 0.04));
     }
-    if (st === 0 || st === 4 || (adv && (st === 2 || st === 6))) note(a, mtof(ch[0] - 24), t, eighth * 1.6, 'sine', 0.16, 0.01, 0.15);
-    const arpN = ch[ARP[st] % 3] + 12 + (ARP[st] === 3 ? 12 : 0);
-    if (adv || st % 2 === 0) note(a, mtof(arpN), t, eighth * 0.7, 'triangle', adv ? 0.045 : 0.035, 0.005, 0.18);
-    if (Math.floor(MUS.bars / 4) % 2 === 1) { const m = MELODY[bar][st]; if (m) note(a, mtof(m), t, eighth * 1.5, 'square', 0.018, 0.02, 0.2); }
-    if (Math.random() < 0.08) note(a, mtof([84, 86, 88, 91, 93][Math.floor(Math.random() * 5)]), t, 0.05, 'sine', 0.03, 0.005, 1.4);
-    if (adv) { if (st % 4 === 0) kick(a, t); if (st % 2 === 1) hat(a, t); }
     MUS.next += eighth; MUS.step++;
   }
 }
@@ -2990,20 +3205,20 @@ ART.music = {
   get on() { return MUS.on; },
   start() {
     const a = ac(); if (!a || MUS.on) return;
-    if (!MUS.bus) { MUS.bus = a.createGain(); const lp = a.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 5200; MUS.bus.connect(lp).connect(a.destination); }
-    MUS.bus.gain.cancelScheduledValues(a.currentTime); MUS.bus.gain.setValueAtTime(0.0001, a.currentTime); MUS.bus.gain.exponentialRampToValueAtTime(Math.max(0.0001, 0.8 * MUS.vol), a.currentTime + 1.5);
-    MUS.on = true; MUS.next = a.currentTime + 0.1; MUS.step = 0;
-    clearInterval(MUS.timer); MUS.timer = setInterval(schedule, 40);
+    if (!MUS.bus) makeBus(a);
+    MUS.bus.gain.cancelScheduledValues(a.currentTime); MUS.bus.gain.setValueAtTime(0.0001, a.currentTime); MUS.bus.gain.exponentialRampToValueAtTime(Math.max(0.0001, 0.9 * MUS.vol), a.currentTime + 2);
+    MUS.on = true; MUS.next = a.currentTime + 0.1; MUS.step = 0; MUS.cycle = -1; MUS.playing = MUS.mood;
+    clearInterval(MUS.timer); MUS.timer = setInterval(schedule, 50);
   },
   stop() {
     MUS.on = false; clearInterval(MUS.timer);
-    if (actx && MUS.bus) { MUS.bus.gain.cancelScheduledValues(actx.currentTime); MUS.bus.gain.setValueAtTime(MUS.bus.gain.value, actx.currentTime); MUS.bus.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.6); }
+    if (actx && MUS.bus) { MUS.bus.gain.cancelScheduledValues(actx.currentTime); MUS.bus.gain.setValueAtTime(Math.max(0.0001, MUS.bus.gain.value), actx.currentTime); MUS.bus.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.8); }
   },
   mood(m) { MUS.mood = m; },
   get volume() { return MUS.vol; },
   setVolume(v) {
     MUS.vol = Math.max(0, Math.min(1, v));
-    if (actx && MUS.bus && MUS.on) { MUS.bus.gain.cancelScheduledValues(actx.currentTime); MUS.bus.gain.setTargetAtTime(Math.max(0.0001, 0.8 * MUS.vol), actx.currentTime, 0.05); }
+    if (actx && MUS.bus && MUS.on) { MUS.bus.gain.cancelScheduledValues(actx.currentTime); MUS.bus.gain.setTargetAtTime(Math.max(0.0001, 0.9 * MUS.vol), actx.currentTime, 0.05); }
   },
 };
 document.addEventListener('visibilitychange', () => { if (!actx) return; if (document.hidden) actx.suspend(); else actx.resume(); });
@@ -3240,30 +3455,111 @@ H.CARDS = [
 const E = () => root.ENGINE;
 
 /* ---------- Orbi's quiz ---------- */
+// [question, [right answer, wrong, wrong], index of right answer, topic, "did you know" fact, level (1 = easy, 2 = harder)]
+H.QUIZ_TOPICS = [['all', 'Everything'], ['planets', 'Planets and moons'], ['rockets', 'Rockets'], ['sats', 'Satellites'], ['history', 'Space history'], ['kz', 'Kazakhstan in space'], ['earth', 'Earth from space']];
 H.QUIZ = [
-  ['How long does the space station take to go around Earth once?', ['About 92 minutes', 'One whole day', 'One week'], 0],
-  ['Which planet has the strongest radiation belts?', ['Jupiter', 'Mars', 'Venus'], 0],
-  ['Why do low satellites slowly fall down?', ['Thin air drags on them', 'Their batteries run out', 'The Moon pulls them'], 0],
-  ['How strong is sunlight at Jupiter compared with Earth?', ['About 27 times weaker', 'Twice as strong', 'Exactly the same'], 0],
-  ['What does a satellite\'s battery do?', ['Keeps it working in Earth\'s shadow', 'Makes it fly faster', 'Keeps it cold'], 0],
-  ['How often do Earth and Mars line up for an easy trip?', ['Every 26 months', 'Every week', 'Every 10 years'], 0],
-  ['What is a CubeSat built from?', ['10 cm cubes called "U"', 'Ice cubes', 'Sugar cubes'], 0],
-  ['Why do engineers shake spacecraft before launch?', ['To check they survive the rocket ride', 'To mix the fuel', 'Just for fun'], 0],
-  ['Where is the James Webb Space Telescope?', ['1.5 million km from Earth', 'On the Moon', 'Inside the space station'], 0],
-  ['Why do far-away missions use giant dishes on Earth?', ['To catch very weak radio signals', 'To make electricity', 'To look cool'], 0],
-  ['What does a reaction wheel do?', ['Turns the spacecraft to point it', 'Makes electricity', 'Stores photos'], 0],
-  ['What powers the Perseverance rover?', ['A nuclear battery', 'A diesel engine', 'Wind'], 0],
-  ['What is space junk?', ['Old satellites and rocket parts', 'Rocks from the Moon', 'Clouds'], 0],
-  ['A bigger camera lens makes photos...', ['Sharper', 'Blurrier', 'Black and white'], 0],
-  ['How can Mars\'s air help a spacecraft?', ['It can slow it down for free', 'It refuels the engine', 'It charges the battery'], 0],
-  ['About how fast does the space station fly?', ['8 km every second', '100 km per hour', 'As fast as a bike'], 0],
-  ['Why do satellites need margins (spare weight, power and money)?', ['Because surprises always happen', 'To look bigger', 'They don\'t need them'], 0],
-  ['What does "geostationary" mean?', ['It seems to hang still over one spot', 'It never moves at all', 'It sits on the ground'], 0],
+  // ---- satellites and engineering
+  ['How long does the space station take to go around Earth once?', ['About 92 minutes', 'One whole day', 'One week'], 0, 'sats', 'That means the astronauts see about 16 sunrises every day!', 1],
+  ['Why do low satellites slowly fall down?', ['Thin air drags on them', 'Their batteries run out', 'The Moon pulls them'], 0, 'sats', 'Even 400 km up there is a tiny bit of air. It slowly slows satellites down.', 1],
+  ['What does a satellite\'s battery do?', ['Keeps it working in Earth\'s shadow', 'Makes it fly faster', 'Keeps it cold'], 0, 'sats', 'In low orbit a satellite spends up to a third of every lap in Earth\'s shadow, where solar panels make no power.', 1],
+  ['What is a CubeSat built from?', ['10 cm cubes called "U"', 'Ice cubes', 'Sugar cubes'], 0, 'sats', 'One CubeSat unit is a 10 cm cube that weighs about 1 to 2 kg. Students all over the world build them.', 1],
+  ['Why do engineers shake spacecraft before launch?', ['To check they survive the rocket ride', 'To mix the fuel', 'Just for fun'], 0, 'sats', 'A launch shakes and roars like a giant earthquake for several minutes. Testing finds weak parts on the ground.', 1],
+  ['Why do far-away missions use giant dishes on Earth?', ['To catch very weak radio signals', 'To make electricity', 'To look cool'], 0, 'sats', 'Voyager 1\'s radio is only about 20 watts, like a fridge light bulb, yet giant dishes still hear it.', 1],
+  ['What does a reaction wheel do?', ['Turns the spacecraft to point it', 'Makes electricity', 'Stores photos'], 0, 'sats', 'Spinning a wheel one way turns the spacecraft the other way, without using any fuel.', 2],
+  ['A bigger camera lens makes photos...', ['Sharper', 'Blurrier', 'Black and white'], 0, 'sats', 'A wider lens collects more light and can see smaller details.', 1],
+  ['Why do satellites need margins (spare weight, power and money)?', ['Because surprises always happen', 'To look bigger', 'They don\'t need them'], 0, 'sats', 'Engineers always keep something spare, because real projects never go exactly as planned.', 2],
+  ['What does "geostationary" mean?', ['It seems to hang still over one spot', 'It never moves at all', 'It sits on the ground'], 0, 'sats', 'It goes around Earth once a day, exactly as fast as Earth spins, so it stays over the same place.', 2],
+  ['What do solar panels on a satellite do?', ['Turn sunlight into electricity', 'Keep it warm', 'Steer it'], 0, 'sats', 'Far from the Sun the light is weak, so the Juno spacecraft at Jupiter needs three huge solar wings.', 1],
+  ['Why do many satellites wear shiny gold foil?', ['To protect them from heat and cold', 'For decoration', 'To make them heavier'], 0, 'sats', 'The foil is a thermal blanket. It keeps the inside at a comfy temperature.', 1],
+  ['How does GPS know where you are?', ['It listens to signals from several satellites', 'A camera looks at you', 'It asks the Moon'], 0, 'sats', 'Your phone measures how long the signals from at least 4 satellites took to arrive.', 1],
+  ['How do satellites send their photos home?', ['By radio waves', 'Through a long cable', 'On paper'], 0, 'sats', 'Big dishes on the ground catch the radio signal. Some new satellites also send data with lasers.', 1],
+  ['How high up are geostationary satellites?', ['About 36,000 km', 'About 400 km', 'About 384,000 km'], 0, 'sats', 'At 35,786 km up, one trip around Earth takes exactly one day.', 2],
+  ['What is a sun-synchronous orbit good for?', ['Photos with the same light every day', 'Flying very close to the Sun', 'Staying still in the sky'], 0, 'sats', 'The satellite passes over each place at the same time of day, so shadows look the same in every photo.', 2],
+  ['Why do some spacecraft carry two computers?', ['If one breaks, the other takes over', 'To play games', 'To be heavier'], 0, 'sats', 'Space radiation can upset computer chips, so important missions bring a backup.', 1],
+  ['What is a ground station?', ['A big antenna that talks to satellites', 'A train station', 'A rocket factory'], 0, 'sats', 'NASA\'s Deep Space Network has giant dishes in California, Spain and Australia, so one can always see the sky.', 1],
+  ['Why is it hard to drive a rover on Mars with a joystick?', ['Radio signals take minutes to get there', 'Mars has no air', 'Rovers are shy'], 0, 'sats', 'A signal takes 3 to 22 minutes each way, so rovers must make many decisions by themselves.', 1],
+  ['What is a thruster?', ['A small rocket engine for steering', 'A solar panel', 'A camera'], 0, 'sats', 'Thrusters nudge spacecraft into the right orbit and out of the way of space junk.', 1],
+  ['What does a star tracker do?', ['Looks at stars to see where the spacecraft points', 'Counts all the stars', 'Makes stars brighter'], 0, 'sats', 'It compares the stars it sees with a star map, just like sailors did long ago.', 2],
+  ['How cold can the shady side of a spacecraft get?', ['About −150 °C', 'About 0 °C', 'About 20 °C'], 0, 'sats', 'In space the sunny side can be over 100 °C while the shady side is freezing.', 2],
+  ['Why do Jupiter missions need radiation shields?', ['Jupiter\'s radiation would ruin the electronics', 'To block meteorites', 'To keep warm'], 0, 'sats', 'The Juno spacecraft keeps its computers in a titanium vault.', 2],
+  ['What does a heat shield do?', ['Protects a capsule coming back through the air', 'Keeps the rocket cold', 'Blocks sunlight'], 0, 'sats', 'Coming home, a capsule hits the air so fast that its shield glows at about 2,700 °C.', 2],
+  ['What is space junk?', ['Old satellites and rocket parts', 'Rocks from the Moon', 'Clouds'], 0, 'sats', 'Tens of thousands of pieces are tracked so that working satellites can dodge them.', 1],
+  // ---- planets and moons
+  ['Which planet has the strongest radiation belts?', ['Jupiter', 'Mars', 'Venus'], 0, 'planets', 'Jupiter\'s giant magnetic field traps fast particles that can fry electronics.', 2],
+  ['How strong is sunlight at Jupiter compared with Earth?', ['About 27 times weaker', 'Twice as strong', 'Exactly the same'], 0, 'planets', 'Jupiter is about 5 times farther from the Sun, and light gets weaker very fast with distance.', 2],
+  ['How often do Earth and Mars line up for an easy trip?', ['Every 26 months', 'Every week', 'Every 10 years'], 0, 'planets', 'That is why Mars missions must launch during short "launch windows".', 2],
+  ['Where is the James Webb Space Telescope?', ['1.5 million km from Earth', 'On the Moon', 'Inside the space station'], 0, 'planets', 'It floats near a balance point called L2, where it stays cold and dark behind its huge sunshield.', 2],
+  ['How can Mars\'s air help a spacecraft?', ['It can slow it down for free', 'It refuels the engine', 'It charges the battery'], 0, 'planets', 'Skimming the top of the air to slow down is called aerobraking. NASA\'s MRO did it for about 6 months.', 2],
+  ['Which planet is the biggest in the Solar System?', ['Jupiter', 'Saturn', 'Earth'], 0, 'planets', 'Jupiter is so big that more than 1,000 Earths could fit inside it.', 1],
+  ['Which planet is closest to the Sun?', ['Mercury', 'Venus', 'Mars'], 0, 'planets', 'Mercury goes around the Sun in just 88 days.', 1],
+  ['Which planet is the hottest?', ['Venus', 'Mercury', 'Mars'], 0, 'planets', 'Venus\'s thick clouds trap heat. Its ground is about 465 °C, hot enough to melt lead.', 1],
+  ['Why does Mars look red?', ['Its dust is rusty', 'It is very hot', 'It is covered in lava'], 0, 'planets', 'Mars dust is full of iron oxide, the same stuff that makes rust.', 1],
+  ['What is the Great Red Spot on Jupiter?', ['A giant storm', 'A volcano', 'A lake of lava'], 0, 'planets', 'This storm is wider than Earth, and people have watched it for more than 150 years.', 1],
+  ['Which planet has the most famous rings?', ['Saturn', 'Mars', 'Mercury'], 0, 'planets', 'Saturn\'s rings are made of billions of pieces of ice and rock.', 1],
+  ['How long does sunlight take to reach Earth?', ['About 8 minutes', 'One second', 'One day'], 0, 'planets', 'Light travels 300,000 km every second, and the Sun is 150 million km away.', 1],
+  ['How far away is the Moon?', ['About 384,000 km', 'About 3,800 km', 'About 38 million km'], 0, 'planets', 'All the other planets could fit side by side in the gap between Earth and the Moon!', 1],
+  ['Why do we always see the same side of the Moon?', ['It spins once each time it goes around Earth', 'It doesn\'t spin at all', 'The other side is always dark'], 0, 'planets', 'This is called tidal locking. The far side gets just as much sunlight as the near side.', 2],
+  ['Where on the Moon could there be water ice?', ['In dark craters at the poles', 'On the sunny equator', 'Inside volcanoes'], 0, 'planets', 'Some polar craters never see sunlight, so ice can last there for billions of years.', 1],
+  ['What is Olympus Mons?', ['The biggest volcano in the Solar System', 'A crater on the Moon', 'A star'], 0, 'planets', 'It is on Mars and is about 22 km high, more than twice as tall as Mount Everest.', 1],
+  ['How long is one year on Mars?', ['About 687 Earth days', '365 days', '30 days'], 0, 'planets', 'Mars is farther from the Sun, so one trip around it takes almost two Earth years.', 2],
+  ['Which moon has a hidden ocean under its ice?', ['Europa', 'Our Moon', 'Phobos'], 0, 'planets', 'Jupiter\'s moon Europa may have twice as much water as all of Earth\'s oceans. NASA\'s Europa Clipper is on its way there.', 2],
+  ['What is a light-year?', ['How far light travels in a year', 'How long a year lasts', 'A very sunny year'], 0, 'planets', 'One light-year is about 9.5 trillion km.', 2],
+  ['What is the Sun?', ['A star', 'A planet', 'A giant campfire'], 0, 'planets', 'The Sun is a medium-sized star: a ball of hot gas powered by nuclear fusion.', 1],
+  ['Which planet spins lying on its side?', ['Uranus', 'Neptune', 'Venus'], 0, 'planets', 'Uranus is tilted about 98 degrees, so it rolls around the Sun like a ball.', 2],
+  ['Which planet has the shortest day?', ['Jupiter', 'Earth', 'Venus'], 0, 'planets', 'Jupiter spins around once in about 10 hours.', 2],
+  ['If you drop a hammer and a feather on the Moon, which lands first?', ['They land together', 'The hammer', 'The feather'], 0, 'planets', 'Apollo 15 astronaut David Scott tried it in 1971. With no air, both landed at the same moment.', 1],
+  ['How much would you weigh on the Moon?', ['About one sixth of your Earth weight', 'The same', 'Twice as much'], 0, 'planets', 'The Moon\'s gravity is about one sixth of Earth\'s, so astronauts can bounce around.', 1],
+  ['What keeps the Moon going around Earth?', ['Gravity', 'Wind', 'Magnets'], 0, 'planets', 'The Moon is always falling toward Earth, but it moves sideways so fast that it keeps missing!', 1],
+  // ---- rockets
+  ['About how fast does the space station fly?', ['8 km every second', '100 km per hour', 'As fast as a bike'], 0, 'rockets', 'That is about 28,000 km per hour: from Almaty to Astana in about 2 minutes!', 1],
+  ['Why do rockets have several parts called stages?', ['They drop empty tanks to get lighter', 'To carry more passengers', 'To look taller'], 0, 'rockets', 'Dropping empty tanks means the engines push less weight, so the rocket can go much faster.', 1],
+  ['What pushes a rocket up?', ['Hot gas rushing out of the bottom', 'The air under it', 'Magnets'], 0, 'rockets', 'Pushing gas down pushes the rocket up. It works even in empty space, where there is no air.', 1],
+  ['Why do many rockets launch toward the east?', ['Earth\'s spin gives them a free push', 'The wind always blows east', 'It is a tradition'], 0, 'rockets', 'At the equator Earth spins at about 1,670 km per hour, a free speed boost.', 2],
+  ['What is special about a Falcon 9 rocket\'s first stage?', ['It lands and flies again', 'It is made of wood', 'It has no engines'], 0, 'rockets', 'Reusing boosters makes going to space much cheaper.', 1],
+  ['What is a rideshare launch?', ['Many small satellites share one rocket', 'Astronauts share a car', 'Two rockets launch together'], 0, 'rockets', 'Sharing a rocket is like a carpool: much cheaper, but you go where the big customer goes.', 1],
+  ['How fast must you go to escape Earth\'s gravity?', ['About 11 km per second', 'About 1 km per hour', 'About 1,000 km per second'], 0, 'rockets', 'At about 11.2 km per second, a spacecraft can leave Earth and never fall back.', 2],
+  ['Which giant rocket carried astronauts to the Moon in the Apollo program?', ['Saturn V', 'Soyuz', 'Falcon 9'], 0, 'rockets', 'Saturn V was 110 m tall, taller than a 30-storey building.', 2],
+  ['What does "T minus 10" mean?', ['10 seconds before launch', '10 minutes after launch', '10 astronauts on board'], 0, 'rockets', 'The countdown helps the whole team check everything in the right order.', 1],
+  ['What is a gravity assist?', ['Swinging past a planet to speed up', 'Pushing a rocket by hand', 'Carrying extra fuel'], 0, 'rockets', 'Voyager and Juno used gravity assists to travel faster without burning extra fuel.', 2],
+  ['Which rocket carries astronauts to space from Baikonur?', ['Soyuz', 'Saturn V', 'Ariane 6'], 0, 'rockets', 'Soyuz rockets have launched from Baikonur since the 1960s, more often than any other rocket family.', 1],
+  ['Why can\'t you hear anything in space?', ['There is no air to carry sound', 'Space is too cold', 'Helmets block the sound'], 0, 'rockets', 'Sound needs air, water or something else to travel through.', 1],
+  // ---- space history
+  ['Who was the first person in space?', ['Yuri Gagarin', 'Neil Armstrong', 'Valentina Tereshkova'], 0, 'history', 'On 12 April 1961, Gagarin flew once around Earth in Vostok 1. He launched from Baikonur.', 1],
+  ['Who was the first person to walk on the Moon?', ['Neil Armstrong', 'Yuri Gagarin', 'Buzz Lightyear'], 0, 'history', 'Neil Armstrong stepped onto the Moon in July 1969, during the Apollo 11 mission.', 1],
+  ['Who was the first woman in space?', ['Valentina Tereshkova', 'Sally Ride', 'Amelia Earhart'], 0, 'history', 'She flew in 1963 on Vostok 6 and went around Earth 48 times.', 1],
+  ['What was the first artificial satellite?', ['Sputnik 1', 'Hubble', 'Voyager 1'], 0, 'history', 'Sputnik 1 was launched from Baikonur on 4 October 1957. It was only 58 cm wide.', 1],
+  ['Which spacecraft has traveled farthest from Earth?', ['Voyager 1', 'Apollo 11', 'The space station'], 0, 'history', 'Launched in 1977, Voyager 1 is now in interstellar space, more than 24 billion km away.', 1],
+  ['Which famous telescope has been in orbit since 1990?', ['Hubble', 'James Webb', 'Galileo\'s telescope'], 0, 'history', 'Astronauts visited Hubble five times to repair and upgrade it.', 1],
+  ['Who was the first animal to orbit Earth?', ['The dog Laika', 'A cat', 'A goldfish'], 0, 'history', 'Laika flew on Sputnik 2 in 1957. In 1960 the dogs Belka and Strelka orbited Earth and came home safely.', 2],
+  ['What was Artemis II?', ['A crewed flight around the Moon', 'A Mars rover', 'A space telescope'], 0, 'history', 'In April 2026 four astronauts flew around the Moon, the first crewed trip to the Moon since 1972.', 1],
+  ['How many people have walked on the Moon?', ['12', '2', '100'], 0, 'history', 'They all walked there between 1969 and 1972, during the Apollo missions.', 2],
+  ['Which rover found signs that Mars once had lakes?', ['Curiosity', 'Lunokhod 1', 'Hubble'], 0, 'history', 'Since 2012 Curiosity has explored Gale crater, the bed of an ancient lake.', 2],
+  ['What is the International Space Station?', ['A home and lab where astronauts live in orbit', 'A rocket factory on the Moon', 'A TV channel'], 0, 'history', 'People have lived on board without a break since November 2000.', 1],
+  ['What powers the Perseverance rover?', ['A nuclear battery', 'A diesel engine', 'Wind'], 0, 'history', 'It turns heat from plutonium into about 110 watts of electricity, day and night.', 2],
+  // ---- Kazakhstan in space
+  ['In which country is the Baikonur Cosmodrome?', ['Kazakhstan', 'Japan', 'Brazil'], 0, 'kz', 'Baikonur is the world\'s first and largest space launch site. It is in the Kyzylorda Region.', 1],
+  ['Who was the first Kazakh cosmonaut?', ['Tokhtar Aubakirov', 'Yuri Gagarin', 'Neil Armstrong'], 0, 'kz', 'Tokhtar Aubakirov flew to the Mir space station in October 1991.', 1],
+  ['Which Kazakh cosmonaut flew to space three times?', ['Talgat Musabayev', 'Tokhtar Aubakirov', 'Aidyn Aimbetov'], 0, 'kz', 'Talgat Musabayev flew in 1994, 1998 and 2001 and spent more than 340 days in space.', 2],
+  ['Who flew to the space station for Kazakhstan in 2015?', ['Aidyn Aimbetov', 'Neil Armstrong', 'Yuri Gagarin'], 0, 'kz', 'Aidyn Aimbetov spent about 10 days on the International Space Station in September 2015.', 2],
+  ['What are KazSat satellites for?', ['TV, phone and internet links', 'Taking photos of Mars', 'Mining asteroids'], 0, 'kz', 'KazSat are Kazakhstan\'s own communication satellites, high up in geostationary orbit.', 2],
+  ['Why did the Aral Sea shrink?', ['Its rivers were used to water fields', 'A meteor hit it', 'It froze'], 0, 'kz', 'Landsat satellites have photographed it since 1972, so we can see exactly how it changed.', 1],
+  ['Which satellites take photos of Kazakhstan\'s land?', ['KazEOSat', 'Hubble', 'Voyager'], 0, 'kz', 'KazEOSat-1 and KazEOSat-2 have watched Kazakhstan\'s fields, rivers and cities since 2014.', 2],
+  ['Why was Baikonur built in the Kazakh steppe?', ['It is flat, empty and quite far south', 'It is next to the ocean', 'It is on top of a mountain'], 0, 'kz', 'Rocket parts can fall on empty land far from towns, and being farther south helps rockets reach orbit.', 2],
+  // ---- Earth from space
+  ['How much of Earth is covered by water?', ['About 71%', 'About 10%', 'About 50%'], 0, 'earth', 'That is why Earth looks like a blue marble from space.', 1],
+  ['Can you see the Great Wall of China from the Moon?', ['No, it is far too thin', 'Yes, easily', 'Only at night'], 0, 'earth', 'The wall is long but narrow. Even from low orbit it is very hard to spot.', 2],
+  ['What do weather satellites watch?', ['Clouds and storms', 'Fish', 'Traffic jams'], 0, 'earth', 'They help forecasters warn people about big storms days ahead.', 1],
+  ['How can satellites help firefighters?', ['Heat cameras spot new fires', 'They drop water', 'They blow out the flames'], 0, 'earth', 'Infrared cameras see heat, even through thick smoke.', 1],
+  ['What does the ozone layer do?', ['Blocks harmful ultraviolet sunlight', 'Makes the sky blue', 'Holds satellites up'], 0, 'earth', 'Satellites have watched the ozone hole over Antarctica slowly start to heal.', 2],
+  ['Why is the sky blue?', ['Air scatters blue sunlight the most', 'The ocean reflects onto it', 'Space is blue'], 0, 'earth', 'In space there is no air to scatter light, so the sky looks black.', 2],
+  ['How many sunrises do space station astronauts see each day?', ['About 16', 'One', 'About 100'], 0, 'earth', 'They go around Earth every 92 minutes, so a new day starts every hour and a half.', 1],
 ];
-H.quizRound = (seed, n = 3) => {
-  const r = root.SIM.rng(seed), idx = H.QUIZ.map((_, i) => i);
-  for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [idx[i], idx[j]] = [idx[j], idx[i]]; }
-  return idx.slice(0, n).map(i => { const [q, opts, ok] = H.QUIZ[i]; const order = [0, 1, 2].sort(() => r() - 0.5); return { q, opts: order.map(k => opts[k]), ok: order.indexOf(ok) }; });
+H.quizRound = (seed, n = 5, topic = 'all', easy = false) => {
+  const r = root.SIM.rng(seed);
+  let pool = H.QUIZ.map((q, i) => i).filter(i => topic === 'all' || H.QUIZ[i][3] === topic);
+  if (easy) { const p1 = pool.filter(i => H.QUIZ[i][5] === 1); if (p1.length >= n) pool = p1; }
+  for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+  return pool.slice(0, n).map(i => { const [q, opts, ok, tp, fact] = H.QUIZ[i]; const order = [0, 1, 2].sort(() => r() - 0.5); return { q, opts: order.map(k => opts[k]), ok: order.indexOf(ok), fact, topic: tp }; });
 };
 
 /* ---------- daily mission ---------- */
@@ -3309,7 +3605,7 @@ root.HOOKS = H;
    ===================================================================== */
 'use strict';
 (function (root) {
-const L = { lang: 'en', missing: new Set(), dict: {}, rx: {} };
+const L = { lang: 'en', missing: new Set(), partial: new Set(), dict: {}, rx: {} };
 L.LANGS = [['en', 'English', 'EN'], ['kk', 'Қазақша', 'ҚАЗ'], ['ru', 'Русский', 'РУС']];
 
 const MON = {
@@ -3359,11 +3655,18 @@ function lookup(s, lang, depth) {
   // numbers -> template
   const toks = []; const key = s.replace(TOK, t => { toks.push(t); return `{${toks.length - 1}}`; });
   if (toks.length && D[key] != null) return D[key].replace(/\{(\d+)\}/g, (_, i) => trToken(toks[+i], lang));
+  // a sentence may start with a capital letter while the dictionary has it in lowercase
+  if (/^[A-Z][a-z]/.test(s)) {
+    const lo = s[0].toLowerCase() + s.slice(1), cap = r => r[0].toUpperCase() + r.slice(1);
+    if (D[lo] != null) return cap(D[lo]);
+    const toks2 = []; const key2 = lo.replace(TOK, t => { toks2.push(t); return `{${toks2.length - 1}}`; });
+    if (toks2.length && D[key2] != null) return cap(D[key2].replace(/\{(\d+)\}/g, (_, i) => trToken(toks2[+i], lang)));
+  }
   // free-text slots {*}
   if (depth < 3) for (const [re, out, slots] of (L.rx[lang] || [])) {
     const m = s.match(re); if (!m) continue;
     const stars = [], nums = {};
-    slots.forEach((sl, i) => { const part = m[i + 1] || ''; if (sl === '*') { const t = lookup(part, lang, depth + 1); stars.push(t != null ? t : part.replace(TOK, x => trToken(x, lang))); } else nums[sl] = trToken(part, lang); });
+    slots.forEach((sl, i) => { const part = m[i + 1] || ''; if (sl === '*') { const t = lookup(part, lang, depth + 1); if (t == null && /[A-Za-z]{2,} [A-Za-z]{2,}/.test(part)) L.partial.add(part); stars.push(t != null ? t : part.replace(TOK, x => trToken(x, lang))); } else nums[sl] = trToken(part, lang); });
     let k = 0; return out.replace(/\{\*\}|\{(\d+)\}/g, (x, n) => n != null ? (nums[n] != null ? nums[n] : x) : stars[k++]);
   }
   return null;
@@ -3407,7 +3710,7 @@ root.I18N = L;
 /* Kazakh and Russian translations, part 1: home, menus, map, briefing, story, tips */
 window.I18N.add3([
   // logo and top bar
-  ["Orbi's", 'Орбидің', 'Орби и его'],
+  ["Orbi's", 'Орбидің', 'Робот Орби'],
   ['Mission Lab', 'Миссия зертханасы', 'Космическая лаборатория'],
   ['Easy', 'Оңай', 'Легко'],
   ['Engineer', 'Инженер', 'Инженер'],
@@ -3434,8 +3737,8 @@ window.I18N.add3([
   ['Play', 'Ойнау', 'Играть'],
   ['Daily mission', 'Күнделікті миссия', 'Ежедневная миссия'],
   ["Today's twist: {*}", 'Бүгінгі ерекшелік: {*}', 'Сюрприз дня: {*}'],
-  ['Done today with {0} star. New one tomorrow!', 'Бүгін {0} жұлдызбен орындалды. Жаңасы ертең!', 'Сегодня пройдено на {0} звезду. Новая завтра!'],
-  ['Done today with {0} stars. New one tomorrow!', 'Бүгін {0} жұлдызбен орындалды. Жаңасы ертең!', 'Сегодня пройдено на {0} зв. Новая завтра!'],
+  ['Done today with {0} star. New one tomorrow!', 'Бүгін {0} жұлдызбен орындалды. Жаңасы ертең!', 'Пройдено сегодня, звёзд: {0}. Новая завтра!'],
+  ['Done today with {0} stars. New one tomorrow!', 'Бүгін {0} жұлдызбен орындалды. Жаңасы ертең!', 'Пройдено сегодня, звёзд: {0}. Новая завтра!'],
   ["Orbi's quiz", 'Орбидің викторинасы', 'Викторина Орби'],
   ['{0} questions. Win Stardust!', '{0} сұрақ. Жұлдыз тозаңын ұт!', '{0} вопроса. Выиграй звёздную пыль!'],
   ['Practice round', 'Жаттығу раунды', 'Тренировка'],
@@ -3446,7 +3749,7 @@ window.I18N.add3([
   ['Space Atlas', 'Ғарыш атласы', 'Космический атлас'],
   ['{0} of {1} cards found', '{1} картаның {0} табылды', 'Найдено карточек: {0} из {1}'],
   ['Space Cadet', 'Ғарыш кадеті', 'Космический кадет'],
-  ['Rocket Rookie', 'Зымыран жаңадан бастаушы', 'Ракетный новичок'],
+  ['Rocket Rookie', 'Жас зымыраншы', 'Ракетный новичок'],
   ['Orbit Explorer', 'Орбита зерттеушісі', 'Исследователь орбит'],
   ['Satellite Builder', 'Серік жасаушы', 'Строитель спутников'],
   ['Flight Engineer', 'Ұшу инженері', 'Бортинженер'],
@@ -3463,7 +3766,7 @@ window.I18N.add3([
   ['Simple words. Orbi handles the tricky engineering. Great for ages {0} and up.', 'Қарапайым сөздер. Күрделі инженерлік істерді Орби шешеді. {0} жастан бастап.', 'Простые слова. Сложную инженерию берёт на себя Орби. Для детей от {0} лет.'],
   ['Every setting, number and formula: link budgets, Δv, margins and TRL.', 'Барлық баптаулар, сандар мен формулалар: байланыс бюджеті, Δv, қорлар және TRL.', 'Все настройки, числа и формулы: бюджет радиолинии, Δv, запасы и TRL.'],
   ['How to play', 'Қалай ойнау керек', 'Как играть'],
-  ['Watch the story', 'Әңгімені көру', 'Смотреть историю'],
+  ['Watch the story', 'Оқиғаны көру', 'Смотреть историю'],
   ['My spaceships', 'Менің кемелерім', 'Мои корабли'],
   ['Hall of fame', 'Даңқ залы', 'Зал славы'],
   ['My badges', 'Менің белгілерім', 'Мои значки'],
@@ -3482,7 +3785,7 @@ window.I18N.add3([
   ['Every mission is open now.', 'Енді барлық миссия ашық.', 'Теперь все миссии открыты.'],
   ['Collect {0} more star to open this planet. Or try today\'s Daily mission!', 'Бұл планетаны ашу үшін тағы {0} жұлдыз жина. Немесе бүгінгі күнделікті миссияны көр!', 'Собери ещё {0} звезду, чтобы открыть эту планету. Или попробуй ежедневную миссию!'],
   ['Collect {0} more stars to open this planet. Or try today\'s Daily mission!', 'Бұл планетаны ашу үшін тағы {0} жұлдыз жина. Немесе бүгінгі күнделікті миссияны көр!', 'Собери ещё звёзд: {0}, чтобы открыть эту планету. Или попробуй ежедневную миссию!'],
-  ['Beginner', 'Бастауыш', 'Новичок'],
+  ['Beginner', 'Бастаушы', 'Новичок'],
   ['Intermediate', 'Орташа', 'Средний'],
   ['Advanced', 'Күрделі', 'Сложный'],
   ['Expert', 'Сарапшы', 'Эксперт'],
@@ -3575,14 +3878,14 @@ window.I18N.add3([
   ['One stormy night, lightning hit the big antenna. The lights flickered on, and something inside started to beep...', 'Бір дауылды түнде найзағай үлкен антеннаға түсті. Шамдар жыпылықтап жанды, ал ішінде бірдеңе пиппилдей бастады...', 'Однажды грозовой ночью молния ударила в большую антенну. Свет замигал, и внутри что-то запищало...'],
   ['Orbi wakes up', 'Орби оянады', 'Орби просыпается'],
   ["It was Orbi, the lab's little robot! The screens were full of calls for help. But one small robot can't design spacecraft alone.", 'Бұл зертхананың кішкентай роботы Орби еді! Экрандар көмек сұраған хабарламаларға толы болды. Бірақ бір кішкентай робот ғарыш аппаратын жалғыз жасай алмайды.', 'Это был Орби, маленький робот лаборатории! Экраны были полны просьб о помощи. Но один маленький робот не может проектировать аппараты в одиночку.'],
-  ['Orbi needs YOU', 'Орбиге СЕН керексің', 'Орби нужен ТЫ'],
+  ['Orbi needs YOU', 'Орбиге СЕН керексің', 'Ты нужен Орби!'],
   ["Orbi needs a Mission Designer: someone who builds smart spacecraft, picks the right rocket and never wastes money. That's you!", 'Орбиге миссия конструкторы керек: ақылды ғарыш аппараттарын жасайтын, дұрыс зымыранды таңдайтын және ақшаны босқа шашпайтын адам. Ол — сен!', 'Орби нужен конструктор миссий: тот, кто строит умные аппараты, выбирает правильную ракету и не тратит деньги зря. Это ты!'],
-  ["Let's fly!", 'Ұштық!', 'Полетели!'],
+  ["Let's fly!", 'Ұшайық!', 'Полетели!'],
   ['Together you and Orbi will build real spacecraft, launch them on real rockets and keep them alive in space. Ready?', 'Сен және Орби бірге нағыз ғарыш аппараттарын жасап, нағыз зымырандармен ұшырасыңдар және ғарышта аман сақтайсыңдар. Дайынсың ба?', 'Вместе с Орби ты будешь строить настоящие аппараты, запускать их на настоящих ракетах и беречь их в космосе. Готов?'],
   ['YOU!', 'СЕН!', 'ТЫ!'],
   ['MISSION LAB', 'ЗЕРТХАНА', 'ЛАБОРАТОРИЯ'],
   ['Tap to continue', 'Жалғастыру үшін бас', 'Нажми, чтобы продолжить'],
-  ['Skip story', 'Әңгімені өткізу', 'Пропустить историю'],
+  ['Skip story', 'Оқиғаны өткізу', 'Пропустить историю'],
   ['Next', 'Келесі', 'Далее'],
   ["Let's go!", 'Алға!', 'Вперёд!'],
   ['Help! Watch the forest fires!', 'Көмектес! Орман өрттерін бақыла!', 'Помогите! Следите за лесными пожарами!'],
@@ -3602,7 +3905,7 @@ window.I18N.add3([
   ['Win stars and prizes', 'Жұлдыздар мен сыйлықтар ұт', 'Выигрывай звёзды и призы'],
   ['Good missions earn up to {0} stars, Stardust and Atlas cards. Stars open new planets.', 'Жақсы миссиялар {0} жұлдызға дейін, жұлдыз тозаңын және атлас карталарын әкеледі. Жұлдыздар жаңа планеталарды ашады.', 'Хорошие миссии приносят до {0} звёзд, звёздную пыль и карточки атласа. Звёзды открывают новые планеты.'],
   ['Start my first mission', 'Алғашқы миссиямды бастау', 'Начать первую миссию'],
-  ['Watch the story again', 'Әңгімені қайта көру', 'Посмотреть историю снова'],
+  ['Watch the story again', 'Оқиғаны қайта көру', 'Посмотреть историю снова'],
   ['Skip the tips, go to the map', 'Кеңестерді өткізіп, картаға өту', 'Без подсказок, к карте'],
   // tutorial
   ['This is the mission map. Every planet is a mission. Tap the glowing one: your first satellite!', 'Бұл миссиялар картасы. Әр планета — бір миссия. Жарқырағанын бас: бұл сенің алғашқы серігің!', 'Это карта миссий. Каждая планета — миссия. Нажми на светящуюся: это твой первый спутник!'],
@@ -3729,7 +4032,7 @@ window.I18N.add3([
   ['I switched to a little fridge (cryocooler) because the Sun keeps moving around us here.', 'Мұнда Күн айналамызда жылжи беретіндіктен, кішкентай тоңазытқышқа (криосалқындатқыш) ауыстым.', 'Я поставил маленький холодильник (криокулер), потому что Солнце здесь всё время движется вокруг нас.'],
   ['I turned the radio volume all the way up.', 'Радионың дауысын барынша көтердім.', 'Я сделал радио на полную мощность.'],
   ['I will use the engine to stay up against air drag.', 'Ауаның кедергісіне қарсы биіктікте қалу үшін қозғалтқышты қолданамын.', 'Я буду поддерживать высоту двигателем против сопротивления воздуха.'],
-  ['I zipped the photos (like a .zip file) so they take half the space.', 'Суреттерді (.zip файл сияқты) сықтым, енді олар екі есе аз орын алады.', 'Я сжал снимки (как .zip-файл), теперь они занимают вдвое меньше места.'],
+  ['I zipped the photos (like a .zip file) so they take half the space.', 'Суреттерді (.zip файл сияқты) сығымдадым, енді олар екі есе аз орын алады.', 'Я сжал снимки (как .zip-файл), теперь они занимают вдвое меньше места.'],
   ["Our radio can't keep up, so I told the instruments to take fewer pictures.", 'Радиомыз үлгермейді, сондықтан құралдарға азырақ суретке түсіруді айттым.', 'Радио не успевает, поэтому я попросил приборы снимать меньше.'],
   ['The Sun is too weak out here, so I switched to nuclear batteries (MMRTG).', 'Мұнда Күн тым әлсіз, сондықтан ядролық батареяларға (MMRTG) ауыстым.', 'Здесь Солнце слишком слабое, поэтому я перешёл на ядерные батареи (MMRTG).'],
   ['The infrared telescope must be colder than −230 °C, so I added a sunshade and cooling.', 'Инфрақызыл телескоп −230 °C-тан суық болуы керек, сондықтан күннен қорғаныш пен салқындату қостым.', 'Инфракрасный телескоп должен быть холоднее −230 °C, поэтому я добавил солнечный щит и охлаждение.'],
@@ -4528,7 +4831,7 @@ window.I18N.add3([
   ['Many small satellites can check the same place again and again. Weather and imaging companies fly dozens or hundreds.', 'Көп кішкентай серік бір жерді қайта-қайта тексере алады. Ауа райы және түсіру компаниялары ондаған не жүздеген серік ұшырады.', 'Много маленьких спутников могут снова и снова проверять одно место. Погодные и фотокомпании запускают десятки и сотни.'],
   ['Van Allen belts', 'Ван Аллен белдеулері', 'Пояса Ван Аллена'],
   ['Fly between 1,000 and 25,000 km', '1000 мен 25 000 км аралығында ұш', 'Лети на высоте от 1000 до 25 000 км'],
-  ["Explorer 1, America's first satellite (1958), discovered rings of trapped radiation around Earth. They are named after James Van Allen.", 'Америкалың алғашқы серігі Explorer 1 (1958) Жердің айналасындағы радиация сақиналарын ашты. Олар Джеймс Ван Алленнің құрметіне аталған.', 'Explorer 1, первый спутник США (1958), открыл кольца захваченной радиации вокруг Земли. Их назвали в честь Джеймса Ван Аллена.'],
+  ["Explorer 1, America's first satellite (1958), discovered rings of trapped radiation around Earth. They are named after James Van Allen.", 'Американың алғашқы серігі Explorer 1 (1958) Жердің айналасындағы радиация сақиналарын ашты. Олар Джеймс Ван Алленнің құрметіне аталған.', 'Explorer 1, первый спутник США (1958), открыл кольца захваченной радиации вокруг Земли. Их назвали в честь Джеймса Ван Аллена.'],
   ['GPS satellites', 'GPS серіктері', 'Спутники GPS'],
   ['Fly a GPS-height orbit (about 20,200 km)', 'GPS биіктігіндегі орбитада ұш (шамамен 20 200 км)', 'Лети на высоте GPS (около 20 200 км)'],
   ['About 31 GPS satellites fly 20,200 km up. Each lap takes 12 hours. Your phone listens to at least 4 of them to find where you are.', 'Шамамен 31 GPS серігі 20 200 км биіктікте ұшады. Әр айналым 12 сағат. Телефоның қайда екеніңді табу үшін олардың кемінде 4-еуін тыңдайды.', 'Около 31 спутника GPS летают на высоте 20 200 км. Один виток длится 12 часов. Телефон слушает хотя бы 4 из них, чтобы найти, где ты.'],
@@ -4939,6 +5242,16 @@ I18N.add3([
   ['Taken by your space telescope.', 'Сенің ғарыш телескобың түсірді.', 'Снято твоим космическим телескопом.'],
   ['You took this photo with zoom x{0}. A bigger camera can zoom closer.', 'Сен бұл суретті x{0} жақындатумен түсірдің. Үлкенірек камера жақынырақ түсіре алады.', 'Ты сделал это фото с приближением x{0}. Камера побольше может приблизить сильнее.'],
   ['After launch, tap this button to look out of the window and take your own photos!', 'Ұшырылғаннан кейін осы түймені басып, терезеден қара және өз суреттеріңді түсір!', 'После запуска нажми эту кнопку, чтобы посмотреть в окно и сделать свои фото!'],
+  ['Menu', 'Мәзір', 'Меню'],
+  ['Leave the workshop?', 'Шеберханадан шығасың ба?', 'Выйти из мастерской?'],
+  ['Your spaceship will be lost unless you save it in the hangar.', 'Ангарға сақтамасаң, ғарыш кемең жоғалады.', 'Твой корабль пропадёт, если не сохранить его в ангаре.'],
+  ['Save and leave', 'Сақтап шығу', 'Сохранить и выйти'],
+  ['Leave without saving', 'Сақтамай шығу', 'Выйти без сохранения'],
+  ['Stay', 'Қалу', 'Остаться'],
+  ['Back to {*}', 'Артқа: {*}', 'Назад: {*}'],
+  ['Window opens after launch', 'Терезе ұшырылғаннан кейін ашылады', 'Окно откроется после запуска'],
+  ['Time speed', 'Уақыт жылдамдығы', 'Скорость времени'],
+  ['Language / Тіл / Язык', 'Language / Тіл / Язык', 'Language / Тіл / Язык'],
   // goal names
   ['Aral Sea', 'Арал теңізі', 'Аральское море'],
   ['Baikonur', 'Байқоңыр', 'Байконур'],
@@ -5024,6 +5337,468 @@ I18N.add3([
   ['A bushfire in Australia', 'Аустралиядағы бұта өрті', 'Пожар в австралийском буше'],
   ['A forest fire in Siberia', 'Сібірдегі орман өрті', 'Лесной пожар в Сибири'],
   ['A steppe fire in Kazakhstan', 'Қазақстандағы дала өрті', 'Степной пожар в Казахстане'],
+]);
+
+</script>
+<script>
+/* Orbi's Mission Lab — quiz translations (English, Kazakh, Russian) */
+'use strict';
+I18N.add3([
+  ['5 questions. Win Stardust!', '5 сұрақ. Жұлдыз тозаңын ұтып ал!', '5 вопросов. Выиграй звёздную пыль!'],
+  ['Did you know?', 'Білесің бе?', 'А ты знал?'],
+  ['Pick a topic for the next round:', 'Келесі раундқа тақырып таңда:', 'Выбери тему для следующего раунда:'],
+  ['Quiz topic', 'Викторина тақырыбы', 'Тема викторины'],
+  ['Everything', 'Барлығы', 'Всё подряд'],
+  ['Planets and moons', 'Ғаламшарлар мен серіктер', 'Планеты и спутники'],
+  ['Rockets', 'Зымырандар', 'Ракеты'],
+  ['Satellites', 'Жасанды серіктер', 'Спутники'],
+  ['Space history', 'Ғарыш тарихы', 'История космоса'],
+  ['Kazakhstan in space', 'Қазақстан ғарышта', 'Казахстан в космосе'],
+  ['Earth from space', 'Жер ғарыштан', 'Земля из космоса'],
+
+  // engineer mode notes, roles and instrument families
+  ['Mission Lead', 'Миссия жетекшісі', 'Руководитель миссии'],
+  ['Science Lead', 'Ғылыми жетекші', 'Научный руководитель'],
+  ['Spacecraft Engineer', 'Аппарат инженері', 'Инженер аппарата'],
+  ['commercial tracking payload', 'коммерциялық бақылау жабдығы', 'коммерческая аппаратура слежения'],
+  ['Cape Canaveral', 'Канаверал мүйісі', 'мыса Канаверал'],
+  ['{*}-class', '{*} класындағы', 'класса {*}'],
+  ['{*}-class, includes cryocooler', '{*} класындағы, криосалқындатқышы бар', 'класса {*}, с криокулером'],
+  ['{*}-class, {0}', '{*} класындағы, {0}', 'класса {*}, {0}'],
+  ['{*}-class, {0} bands', '{*} класындағы, {0} спектр арнасы', 'класса {*}, {0} спектральных каналов'],
+  ['ESPA-class SmallSat', 'ESPA класындағы шағын серік', 'малый спутник класса ESPA'],
+  ['Circular speed v = √(μ/r); period T = 2π√(a³/μ).', 'Дөңгелек орбитадағы жылдамдық v = √(μ/r); айналу периоды T = 2π√(a³/μ).', 'Круговая скорость v = √(μ/r); период обращения T = 2π√(a³/μ).'],
+  ['Eclipse fraction (β = 0) = asin(R/a)/π; Li-ion depth of discharge limited by cycle count.', 'Көлеңке үлесі (β = 0) = asin(R/a)/π; литий-ион батареясының разряд тереңдігі цикл санымен шектеледі.', 'Доля тени (β = 0) = asin(R/a)/π; глубина разряда литий-ионной батареи ограничена числом циклов.'],
+  ['FCC 5-year rule (2024). Drag decay: da/dt = −ρ (C_D A/m) √(μa).', 'FCC-нің 5 жылдық ережесі (2024). Ауа кедергісінен төмендеу: da/dt = −ρ (C_D A/m) √(μa).', 'Правило FCC о 5 годах (2024). Торможение в атмосфере: da/dt = −ρ (C_D A/m) √(μa).'],
+  ['Flux ∝ 1/r²: 1,361 W/m² at 1 AU, 586 at Mars, 50 at Jupiter. MMRTG: 45 kg, ~110 W.', 'Ағын ∝ 1/r²: 1 AU-да 1 361 Вт/м², Марста 586, Юпитерде 50. MMRTG: 45 кг, ~110 Вт.', 'Поток ∝ 1/r²: 1 361 Вт/м² на 1 а.е., 586 у Марса, 50 у Юпитера. MMRTG: 45 кг, ~110 Вт.'],
+  ['Link budget: R = EIRP − L_fs + G/T + 228.6 − Eb/N₀ (dB); L_fs = (4πd/λ)².', 'Байланыс бюджеті: R = EIRP − L_fs + G/T + 228,6 − Eb/N₀ (дБ); L_fs = (4πd/λ)².', 'Бюджет радиолинии: R = EIRP − L_fs + G/T + 228,6 − Eb/N₀ (дБ); L_fs = (4πd/λ)².'],
+  ['Low TRL leads to cost growth, schedule slips and mass growth allowance (AIAA S-120).', 'Төмен TRL бағаның өсуіне, мерзімнің кешігуіне және массаға қор қажеттігіне әкеледі (AIAA S-120).', 'Низкий TRL ведёт к росту стоимости, сдвигу сроков и запасу на рост массы (AIAA S-120).'],
+  ['Mass margin = (allowable − predicted)/allowable; power margin at end of life; cost reserves ~25%.', 'Масса қоры = (рұқсат − болжам)/рұқсат; қуат қоры қызмет соңында; қаржы резерві ~25%.', 'Запас массы = (допустимая − расчётная)/допустимая; запас мощности на конец срока службы; финансовый резерв ~25%.'],
+  ['Synodic period: 780 days (Mars), 399 days (Jupiter). Gravity assists trade time for launch energy (C3).', 'Синодтық период: 780 күн (Марс), 399 күн (Юпитер). Гравитациялық маневр ұшыру энергиясын (C3) уақыт есебінен үнемдейді.', 'Синодический период: 780 дней (Марс), 399 дней (Юпитер). Гравитационные манёвры экономят энергию запуска (C3) ценой времени.'],
+  ['Total ionizing dose (krad) vs part tolerance; single-event upsets cause resets.', 'Жиынтық иондаушы доза (крад) бөлшектің төзімділігімен салыстырылады; жеке бөлшек соққылары қайта жүктелуге әкеледі.', 'Суммарная ионизирующая доза (крад) против стойкости деталей; одиночные сбои вызывают перезагрузки.'],
+  ['Tsiolkovsky: Δv = g₀·Isp·ln(m₀/m_f). Propellant grows exponentially with Δv.', 'Циолковский: Δv = g₀·Isp·ln(m₀/m_f). Отын мөлшері Δv-ге қарай экспоненциалды өседі.', 'Циолковский: Δv = g₀·Isp·ln(m₀/m_f). Запас топлива растёт экспоненциально с Δv.'],
+  ['Vibration, thermal-vacuum and EMC testing reduce early ("infant") failures.', 'Діріл, термовакуумдық және ЭМҮ сынақтары ерте («сәбилік») ақауларды азайтады.', 'Вибрационные, термовакуумные испытания и проверки ЭМС уменьшают ранние («детские») отказы.'],
+  // ---- satellites and engineering
+  ['How long does the space station take to go around Earth once?', 'Ғарыш станциясы Жерді бір рет қанша уақытта айналып шығады?', 'За сколько космическая станция облетает Землю один раз?'],
+  ['About 92 minutes', 'Шамамен 92 минутта', 'Примерно за 92 минуты'],
+  ['One whole day', 'Бір тәулікте', 'За целые сутки'],
+  ['One week', 'Бір аптада', 'За неделю'],
+  ['That means the astronauts see about 16 sunrises every day!', 'Яғни ғарышкерлер күн сайын шамамен 16 рет күннің шығуын көреді!', 'Значит, космонавты видят около 16 рассветов каждый день!'],
+  ['Why do low satellites slowly fall down?', 'Төмен ұшатын серіктер неге баяу төмен түседі?', 'Почему низкие спутники постепенно падают?'],
+  ['Thin air drags on them', 'Сирек ауа оларды тежейді', 'Их тормозит разреженный воздух'],
+  ['Their batteries run out', 'Батареялары таусылады', 'У них садятся батареи'],
+  ['The Moon pulls them', 'Ай оларды тартады', 'Их притягивает Луна'],
+  ['Even 400 km up there is a tiny bit of air. It slowly slows satellites down.', '400 км биіктікте де сәл ғана ауа бар. Ол серіктерді біртіндеп тежейді.', 'Даже на высоте 400 км есть чуть-чуть воздуха. Он понемногу тормозит спутники.'],
+  ['What does a satellite\'s battery do?', 'Серіктің батареясы не істейді?', 'Зачем спутнику батарея?'],
+  ['Keeps it working in Earth\'s shadow', 'Жердің көлеңкесінде жұмыс істеуге көмектеседі', 'Чтобы работать в тени Земли'],
+  ['Makes it fly faster', 'Жылдамырақ ұшуға көмектеседі', 'Чтобы летать быстрее'],
+  ['Keeps it cold', 'Салқын ұстайды', 'Чтобы не нагреваться'],
+  ['In low orbit a satellite spends up to a third of every lap in Earth\'s shadow, where solar panels make no power.', 'Төмен орбитада серік әр айналымның үштен біріне дейінгі уақытын Жердің көлеңкесінде өткізеді. Онда күн панельдері ток өндірмейді.', 'На низкой орбите спутник проводит до трети каждого витка в тени Земли, где солнечные панели не дают тока.'],
+  ['What is a CubeSat built from?', 'КубСат неден құрастырылады?', 'Из чего собирают кубсат?'],
+  ['10 cm cubes called "U"', '«U» деп аталатын 10 см-лік текшелерден', 'Из кубиков по 10 см, их называют «U»'],
+  ['Ice cubes', 'Мұз текшелерінен', 'Из кубиков льда'],
+  ['Sugar cubes', 'Қант текшелерінен', 'Из кусочков сахара'],
+  ['One CubeSat unit is a 10 cm cube that weighs about 1 to 2 kg. Students all over the world build them.', 'КубСаттың бір бөлігі — салмағы 1–2 кг шамасындағы 10 см-лік текше. Оларды бүкіл әлемдегі студенттер жасайды.', 'Один блок кубсата — это кубик 10 см весом примерно 1–2 кг. Их строят студенты по всему миру.'],
+  ['Why do engineers shake spacecraft before launch?', 'Инженерлер ұшыру алдында ғарыш аппаратын неге шайқайды?', 'Зачем инженеры трясут аппарат перед запуском?'],
+  ['To check they survive the rocket ride', 'Зымыранмен ұшуға шыдайтынын тексеру үшін', 'Чтобы проверить, выдержит ли он полёт на ракете'],
+  ['To mix the fuel', 'Отынды араластыру үшін', 'Чтобы перемешать топливо'],
+  ['Just for fun', 'Жай ермек үшін', 'Просто для забавы'],
+  ['A launch shakes and roars like a giant earthquake for several minutes. Testing finds weak parts on the ground.', 'Ұшыру кезінде бірнеше минут бойы алып жер сілкінісіндей дірілдеп, гүрілдейді. Сынақтар әлсіз бөліктерді жердің өзінде табады.', 'Запуск несколько минут трясёт и гремит, как огромное землетрясение. Испытания находят слабые места ещё на Земле.'],
+  ['Why do far-away missions use giant dishes on Earth?', 'Алыс миссияларға Жерде неге алып антенналар керек?', 'Зачем далёким миссиям огромные антенны на Земле?'],
+  ['To catch very weak radio signals', 'Өте әлсіз радиосигналдарды ұстау үшін', 'Чтобы ловить очень слабые радиосигналы'],
+  ['To make electricity', 'Электр өндіру үшін', 'Чтобы вырабатывать электричество'],
+  ['To look cool', 'Әдемі көріну үшін', 'Чтобы круто выглядеть'],
+  ['Voyager 1\'s radio is only about 20 watts, like a fridge light bulb, yet giant dishes still hear it.', '«Вояджер-1» радиосының қуаты небәрі 20 ватт шамасында, тоңазытқыш шамындай. Бірақ алып антенналар оны әлі де естиді.', 'Радио «Вояджера-1» мощностью всего около 20 ватт, как лампочка в холодильнике, но огромные антенны всё равно его слышат.'],
+  ['What does a reaction wheel do?', 'Маховик (реакциялық доңғалақ) не істейді?', 'Что делает маховик?'],
+  ['Turns the spacecraft to point it', 'Аппаратты керекті жаққа бұрады', 'Поворачивает аппарат в нужную сторону'],
+  ['Makes electricity', 'Электр өндіреді', 'Вырабатывает электричество'],
+  ['Stores photos', 'Суреттерді сақтайды', 'Хранит фотографии'],
+  ['Spinning a wheel one way turns the spacecraft the other way, without using any fuel.', 'Доңғалақты бір жаққа айналдырсаң, аппарат екінші жаққа бұрылады. Ол үшін отын керек емес.', 'Если раскрутить колесо в одну сторону, аппарат повернётся в другую, без капли топлива.'],
+  ['A bigger camera lens makes photos...', 'Камераның линзасы үлкен болса, суреттер...', 'Чем больше объектив камеры, тем фото...'],
+  ['Sharper', 'Анығырақ', 'Чётче'],
+  ['Blurrier', 'Бұлдырырақ', 'Размытее'],
+  ['Black and white', 'Ақ-қара', 'Чёрно-белые'],
+  ['A wider lens collects more light and can see smaller details.', 'Кең линза көбірек жарық жинап, ұсақ бөлшектерді көре алады.', 'Широкий объектив собирает больше света и различает мелкие детали.'],
+  ['Why do satellites need margins (spare weight, power and money)?', 'Серіктерге неге қор керек (артық салмақ, қуат және ақша)?', 'Зачем спутникам запас (лишний вес, энергия и деньги)?'],
+  ['Because surprises always happen', 'Өйткені күтпеген жағдайлар әрдайым болады', 'Потому что сюрпризы бывают всегда'],
+  ['To look bigger', 'Үлкенірек көріну үшін', 'Чтобы казаться больше'],
+  ['They don\'t need them', 'Оларға керек емес', 'Он им не нужен'],
+  ['Engineers always keep something spare, because real projects never go exactly as planned.', 'Инженерлер әрдайым қор қалдырады, өйткені нағыз жобалар ешқашан дәл жоспар бойынша жүрмейді.', 'Инженеры всегда оставляют запас: настоящие проекты никогда не идут точно по плану.'],
+  ['What does "geostationary" mean?', '«Геостационарлық» деген не?', 'Что значит «геостационарный»?'],
+  ['It seems to hang still over one spot', 'Бір нүктенің үстінде тұрып қалғандай көрінеді', 'Он будто висит над одной точкой'],
+  ['It never moves at all', 'Мүлдем қозғалмайды', 'Он вообще не движется'],
+  ['It sits on the ground', 'Жерде тұрады', 'Он стоит на земле'],
+  ['It goes around Earth once a day, exactly as fast as Earth spins, so it stays over the same place.', 'Ол Жерді тәулігіне бір рет, дәл Жер айналғандай жылдамдықпен айналады. Сондықтан бір жердің үстінде тұрады.', 'Он облетает Землю раз в сутки, ровно с той же скоростью, с какой она вращается, поэтому остаётся над одним местом.'],
+  ['What do solar panels on a satellite do?', 'Серіктегі күн панельдері не істейді?', 'Что делают солнечные панели спутника?'],
+  ['Turn sunlight into electricity', 'Күн сәулесін электрге айналдырады', 'Превращают солнечный свет в электричество'],
+  ['Keep it warm', 'Жылы ұстайды', 'Согревают его'],
+  ['Steer it', 'Басқарады', 'Управляют им'],
+  ['Far from the Sun the light is weak, so the Juno spacecraft at Jupiter needs three huge solar wings.', 'Күннен алыста жарық әлсіз, сондықтан Юпитердегі «Юнона» аппаратына үш алып күн қанаты керек.', 'Вдали от Солнца свет слабый, поэтому аппарату «Юнона» у Юпитера нужны три огромных солнечных крыла.'],
+  ['Why do many satellites wear shiny gold foil?', 'Көп серік неге жылтыр алтын түсті қаптамамен жабылған?', 'Почему многие спутники покрыты блестящей золотой плёнкой?'],
+  ['To protect them from heat and cold', 'Ыстық пен суықтан қорғау үшін', 'Чтобы защитить от жары и холода'],
+  ['For decoration', 'Сән үшін', 'Для красоты'],
+  ['To make them heavier', 'Ауырырақ болу үшін', 'Чтобы стать тяжелее'],
+  ['The foil is a thermal blanket. It keeps the inside at a comfy temperature.', 'Бұл қаптама — жылу көрпесі. Ол ішіндегі температураны қолайлы ұстайды.', 'Эта плёнка — теплоизоляционное одеяло. Она держит внутри удобную температуру.'],
+  ['How does GPS know where you are?', 'GPS сенің қайда екеніңді қалай біледі?', 'Как GPS узнаёт, где ты находишься?'],
+  ['It listens to signals from several satellites', 'Бірнеше серіктің сигналын тыңдайды', 'Слушает сигналы нескольких спутников'],
+  ['A camera looks at you', 'Камера саған қарайды', 'На тебя смотрит камера'],
+  ['It asks the Moon', 'Айдан сұрайды', 'Спрашивает у Луны'],
+  ['Your phone measures how long the signals from at least 4 satellites took to arrive.', 'Телефоның кемінде 4 серіктің сигналы қанша уақытта жеткенін өлшейді.', 'Телефон измеряет, сколько летели сигналы хотя бы от 4 спутников.'],
+  ['How do satellites send their photos home?', 'Серіктер суреттерін үйге қалай жібереді?', 'Как спутники отправляют фото домой?'],
+  ['By radio waves', 'Радиотолқынмен', 'Радиоволнами'],
+  ['Through a long cable', 'Ұзын кабель арқылы', 'По длинному кабелю'],
+  ['On paper', 'Қағазбен', 'На бумаге'],
+  ['Big dishes on the ground catch the radio signal. Some new satellites also send data with lasers.', 'Жердегі үлкен антенналар радиосигналды ұстайды. Кейбір жаңа серіктер деректерді лазермен де жібереді.', 'Большие антенны на Земле ловят радиосигнал. Некоторые новые спутники передают данные ещё и лазером.'],
+  ['How high up are geostationary satellites?', 'Геостационарлық серіктер қандай биіктікте ұшады?', 'На какой высоте летают геостационарные спутники?'],
+  ['About 36,000 km', 'Шамамен 36 000 км', 'Примерно 36 000 км'],
+  ['About 400 km', 'Шамамен 400 км', 'Примерно 400 км'],
+  ['About 384,000 km', 'Шамамен 384 000 км', 'Примерно 384 000 км'],
+  ['At 35,786 km up, one trip around Earth takes exactly one day.', '35 786 км биіктікте Жерді бір рет айналу дәл бір тәулікке созылады.', 'На высоте 35 786 км один оборот вокруг Земли занимает ровно сутки.'],
+  ['What is a sun-synchronous orbit good for?', 'Күнмен синхронды орбита не үшін керек?', 'Чем хороша солнечно-синхронная орбита?'],
+  ['Photos with the same light every day', 'Күн сайын бірдей жарықпен суретке түсіру үшін', 'Каждый день снимки при одинаковом освещении'],
+  ['Flying very close to the Sun', 'Күнге өте жақын ұшу үшін', 'Можно лететь совсем близко к Солнцу'],
+  ['Staying still in the sky', 'Аспанда қозғалмай тұру үшін', 'Можно неподвижно висеть в небе'],
+  ['The satellite passes over each place at the same time of day, so shadows look the same in every photo.', 'Серік әр жердің үстінен күннің бір мезгілінде өтеді, сондықтан әр суретте көлеңкелер бірдей болады.', 'Спутник пролетает над каждым местом в одно и то же время дня, поэтому тени на всех снимках одинаковые.'],
+  ['Why do some spacecraft carry two computers?', 'Кейбір аппараттар неге екі компьютер алып ұшады?', 'Зачем некоторые аппараты берут два компьютера?'],
+  ['If one breaks, the other takes over', 'Біреуі бұзылса, екіншісі жұмысты жалғастырады', 'Если один сломается, работу продолжит другой'],
+  ['To play games', 'Ойын ойнау үшін', 'Чтобы играть в игры'],
+  ['To be heavier', 'Ауырырақ болу үшін', 'Чтобы быть тяжелее'],
+  ['Space radiation can upset computer chips, so important missions bring a backup.', 'Ғарыштық радиация компьютер чиптерін бұзуы мүмкін, сондықтан маңызды миссиялар қосалқы компьютер алады.', 'Космическая радиация может сбить работу микросхем, поэтому важные миссии берут запасной компьютер.'],
+  ['What is a ground station?', 'Жер станциясы деген не?', 'Что такое наземная станция?'],
+  ['A big antenna that talks to satellites', 'Серіктермен сөйлесетін үлкен антенна', 'Большая антенна для связи со спутниками'],
+  ['A train station', 'Теміржол вокзалы', 'Железнодорожный вокзал'],
+  ['A rocket factory', 'Зымыран зауыты', 'Ракетный завод'],
+  ['NASA\'s Deep Space Network has giant dishes in California, Spain and Australia, so one can always see the sky.', 'NASA-ның Терең ғарыш желісінің алып антенналары Калифорнияда, Испанияда және Аустралияда тұр. Сондықтан біреуі әрқашан аспанды көреді.', 'У сети дальней космической связи NASA огромные антенны в Калифорнии, Испании и Австралии, поэтому хоть одна всегда видит нужную часть неба.'],
+  ['Why is it hard to drive a rover on Mars with a joystick?', 'Марстағы роверді джойстикпен басқару неге қиын?', 'Почему марсоходом трудно управлять джойстиком?'],
+  ['Radio signals take minutes to get there', 'Радиосигнал оған бірнеше минутта жетеді', 'Радиосигнал идёт туда несколько минут'],
+  ['Mars has no air', 'Марста ауа жоқ', 'На Марсе нет воздуха'],
+  ['Rovers are shy', 'Роверлер ұялшақ', 'Марсоходы стесняются'],
+  ['A signal takes 3 to 22 minutes each way, so rovers must make many decisions by themselves.', 'Сигнал бір жаққа 3-тен 22 минутқа дейін жүреді, сондықтан роверлер көп шешімді өздері қабылдауы керек.', 'Сигнал идёт в одну сторону от 3 до 22 минут, поэтому марсоходы многое решают сами.'],
+  ['What is a thruster?', 'Шағын қозғалтқыш (трастер) деген не?', 'Что такое двигатель ориентации?'],
+  ['A small rocket engine for steering', 'Басқаруға арналған кішкентай зымыран қозғалтқышы', 'Маленький ракетный двигатель для поворотов'],
+  ['A solar panel', 'Күн панелі', 'Солнечная панель'],
+  ['A camera', 'Камера', 'Камера'],
+  ['Thrusters nudge spacecraft into the right orbit and out of the way of space junk.', 'Шағын қозғалтқыштар аппаратты дұрыс орбитаға итеріп, ғарыш қоқысынан аулақ әкетеді.', 'Двигатели ориентации подталкивают аппарат на нужную орбиту и уводят от космического мусора.'],
+  ['What does a star tracker do?', 'Жұлдыз датчигі не істейді?', 'Что делает звёздный датчик?'],
+  ['Looks at stars to see where the spacecraft points', 'Аппараттың қайда қарап тұрғанын жұлдыздар арқылы анықтайды', 'Смотрит на звёзды, чтобы понять, куда повёрнут аппарат'],
+  ['Counts all the stars', 'Барлық жұлдыздарды санайды', 'Считает все звёзды'],
+  ['Makes stars brighter', 'Жұлдыздарды жарқынырақ етеді', 'Делает звёзды ярче'],
+  ['It compares the stars it sees with a star map, just like sailors did long ago.', 'Ол көрген жұлдыздарын жұлдыз картасымен салыстырады, ертедегі теңізшілер сияқты.', 'Он сравнивает видимые звёзды со звёздной картой, как когда-то делали моряки.'],
+  ['How cold can the shady side of a spacecraft get?', 'Аппараттың көлеңкелі жағы қаншалықты суық болуы мүмкін?', 'Насколько может остыть теневая сторона аппарата?'],
+  ['About −150 °C', 'Шамамен −150 °C', 'Примерно до −150 °C'],
+  ['About 0 °C', 'Шамамен 0 °C', 'Примерно до 0 °C'],
+  ['About 20 °C', 'Шамамен 20 °C', 'Примерно до 20 °C'],
+  ['In space the sunny side can be over 100 °C while the shady side is freezing.', 'Ғарышта күн түскен жағы 100 °C-тан ыстық болғанда, көлеңкелі жағы мұздап тұруы мүмкін.', 'В космосе солнечная сторона может нагреться выше 100 °C, пока теневая замерзает.'],
+  ['Why do Jupiter missions need radiation shields?', 'Юпитерге ұшатын миссияларға неге радиациядан қорғаныс керек?', 'Зачем миссиям к Юпитеру защита от радиации?'],
+  ['Jupiter\'s radiation would ruin the electronics', 'Юпитердің радиациясы электрониканы бұзады', 'Радиация Юпитера испортит электронику'],
+  ['To block meteorites', 'Метеориттерден қорғану үшін', 'Чтобы защищаться от метеоритов'],
+  ['To keep warm', 'Жылы болу үшін', 'Чтобы было тепло'],
+  ['The Juno spacecraft keeps its computers in a titanium vault.', '«Юнона» аппараты компьютерлерін титан сейфте сақтайды.', 'Аппарат «Юнона» хранит свои компьютеры в титановом сейфе.'],
+  ['What does a heat shield do?', 'Жылу қалқаны не істейді?', 'Что делает теплозащитный экран?'],
+  ['Protects a capsule coming back through the air', 'Ауа арқылы қайтып келе жатқан капсуланы қорғайды', 'Защищает капсулу, когда она возвращается сквозь атмосферу'],
+  ['Keeps the rocket cold', 'Зымыранды салқын ұстайды', 'Охлаждает ракету'],
+  ['Blocks sunlight', 'Күн сәулесін бөгейді', 'Загораживает солнечный свет'],
+  ['Coming home, a capsule hits the air so fast that its shield glows at about 2,700 °C.', 'Үйге оралғанда капсула ауаға соншалық жылдам кіреді, оның қалқаны шамамен 2 700 °C-қа дейін қызады.', 'При возвращении капсула влетает в воздух так быстро, что её экран раскаляется примерно до 2 700 °C.'],
+  ['What is space junk?', 'Ғарыш қоқысы деген не?', 'Что такое космический мусор?'],
+  ['Old satellites and rocket parts', 'Ескі серіктер мен зымыран бөлшектері', 'Старые спутники и части ракет'],
+  ['Rocks from the Moon', 'Айдан келген тастар', 'Камни с Луны'],
+  ['Clouds', 'Бұлттар', 'Облака'],
+  ['Tens of thousands of pieces are tracked so that working satellites can dodge them.', 'Жұмыс істеп тұрған серіктер айналып өтуі үшін он мыңдаған бөлшек бақылауда.', 'За десятками тысяч обломков следят, чтобы работающие спутники могли от них уворачиваться.'],
+
+  // ---- planets and moons
+  ['Which planet has the strongest radiation belts?', 'Қай ғаламшардың радиациялық белдеуі ең күшті?', 'У какой планеты самые сильные радиационные пояса?'],
+  ['Jupiter', 'Юпитер', 'Юпитер'],
+  ['Mars', 'Марс', 'Марс'],
+  ['Venus', 'Шолпан (Венера)', 'Венера'],
+  ['Jupiter\'s giant magnetic field traps fast particles that can fry electronics.', 'Юпитердің алып магнит өрісі электрониканы күйдіріп жіберетін жылдам бөлшектерді ұстап тұрады.', 'Огромное магнитное поле Юпитера удерживает быстрые частицы, которые могут сжечь электронику.'],
+  ['How strong is sunlight at Jupiter compared with Earth?', 'Юпитерде күн сәулесі Жермен салыстырғанда қаншалықты күшті?', 'Насколько сильный солнечный свет у Юпитера по сравнению с Землёй?'],
+  ['About 27 times weaker', 'Шамамен 27 есе әлсіз', 'Примерно в 27 раз слабее'],
+  ['Twice as strong', 'Екі есе күшті', 'В два раза сильнее'],
+  ['Exactly the same', 'Дәл сондай', 'Точно такой же'],
+  ['Jupiter is about 5 times farther from the Sun, and light gets weaker very fast with distance.', 'Юпитер Күннен шамамен 5 есе алыс, ал жарық қашықтық артқан сайын тез әлсірейді.', 'Юпитер примерно в 5 раз дальше от Солнца, а свет с расстоянием слабеет очень быстро.'],
+  ['How often do Earth and Mars line up for an easy trip?', 'Жер мен Марс оңай сапарға қаншалықты жиі ыңғайлы орналасады?', 'Как часто Земля и Марс встают удобно для перелёта?'],
+  ['Every 26 months', 'Әр 26 ай сайын', 'Раз в 26 месяцев'],
+  ['Every week', 'Әр апта сайын', 'Каждую неделю'],
+  ['Every 10 years', 'Әр 10 жыл сайын', 'Раз в 10 лет'],
+  ['That is why Mars missions must launch during short "launch windows".', 'Сондықтан Марсқа миссиялар қысқа «ұшыру терезелері» кезінде ғана ұшады.', 'Поэтому миссии к Марсу стартуют только в короткие «стартовые окна».'],
+  ['Where is the James Webb Space Telescope?', 'Джеймс Уэбб ғарыш телескопы қайда?', 'Где находится космический телескоп «Джеймс Уэбб»?'],
+  ['1.5 million km from Earth', 'Жерден 1,5 млн км қашықтықта', 'В 1,5 млн км от Земли'],
+  ['On the Moon', 'Айда', 'На Луне'],
+  ['Inside the space station', 'Ғарыш станциясының ішінде', 'Внутри космической станции'],
+  ['It floats near a balance point called L2, where it stays cold and dark behind its huge sunshield.', 'Ол L2 деп аталатын тепе-теңдік нүктесінің жанында жүзеді. Онда алып күн қалқанының артында суық әрі қараңғы.', 'Он парит возле точки равновесия L2, где за огромным солнечным щитом холодно и темно.'],
+  ['How can Mars\'s air help a spacecraft?', 'Марстың ауасы аппаратқа қалай көмектесе алады?', 'Как воздух Марса может помочь аппарату?'],
+  ['It can slow it down for free', 'Оны тегін тежей алады', 'Он может бесплатно его затормозить'],
+  ['It refuels the engine', 'Қозғалтқышқа отын құяды', 'Он заправляет двигатель'],
+  ['It charges the battery', 'Батареяны зарядтайды', 'Он заряжает батарею'],
+  ['Skimming the top of the air to slow down is called aerobraking. NASA\'s MRO did it for about 6 months.', 'Ауаның жоғарғы қабатымен сырғып өтіп тежелуді аэротежеу дейді. NASA-ның MRO аппараты мұны шамамен 6 ай жасады.', 'Торможение о верхние слои воздуха называется аэроторможением. Аппарат NASA MRO тормозил так около полугода.'],
+  ['Which planet is the biggest in the Solar System?', 'Күн жүйесіндегі ең үлкен ғаламшар қайсы?', 'Какая планета самая большая в Солнечной системе?'],
+  ['Saturn', 'Сатурн', 'Сатурн'],
+  ['Earth', 'Жер', 'Земля'],
+  ['Jupiter is so big that more than 1,000 Earths could fit inside it.', 'Юпитердің іші соншалық үлкен, оған 1 000-нан астам Жер сыйып кетеді.', 'Юпитер такой большой, что внутри поместилось бы больше 1 000 Земель.'],
+  ['Which planet is closest to the Sun?', 'Күнге ең жақын ғаламшар қайсы?', 'Какая планета ближе всех к Солнцу?'],
+  ['Mercury', 'Меркурий', 'Меркурий'],
+  ['Mercury goes around the Sun in just 88 days.', 'Меркурий Күнді небәрі 88 күнде айналып шығады.', 'Меркурий облетает Солнце всего за 88 дней.'],
+  ['Which planet is the hottest?', 'Ең ыстық ғаламшар қайсы?', 'Какая планета самая горячая?'],
+  ['Venus\'s thick clouds trap heat. Its ground is about 465 °C, hot enough to melt lead.', 'Шолпанның қалың бұлттары жылуды ұстап қалады. Оның беті шамамен 465 °C, қорғасынды ерітуге жетеді.', 'Плотные облака Венеры удерживают тепло. Её поверхность нагрета примерно до 465 °C, это плавит свинец.'],
+  ['Why does Mars look red?', 'Марс неге қызыл болып көрінеді?', 'Почему Марс красный?'],
+  ['Its dust is rusty', 'Оның шаңы тот басқан', 'Его пыль ржавая'],
+  ['It is very hot', 'Ол өте ыстық', 'Он очень горячий'],
+  ['It is covered in lava', 'Ол лавамен жабылған', 'Он покрыт лавой'],
+  ['Mars dust is full of iron oxide, the same stuff that makes rust.', 'Марстың шаңында темір тотығы көп. Тот та нақ осыдан тұрады.', 'Пыль Марса полна оксида железа — того же вещества, из которого состоит ржавчина.'],
+  ['What is the Great Red Spot on Jupiter?', 'Юпитердегі Үлкен Қызыл дақ деген не?', 'Что такое Большое Красное Пятно на Юпитере?'],
+  ['A giant storm', 'Алып дауыл', 'Гигантский ураган'],
+  ['A volcano', 'Жанартау', 'Вулкан'],
+  ['A lake of lava', 'Лава көлі', 'Озеро лавы'],
+  ['This storm is wider than Earth, and people have watched it for more than 150 years.', 'Бұл дауыл Жерден де кең, адамдар оны 150 жылдан астам бақылап келеді.', 'Этот ураган шире Земли, и люди наблюдают его больше 150 лет.'],
+  ['Which planet has the most famous rings?', 'Қай ғаламшардың сақиналары ең әйгілі?', 'У какой планеты самые знаменитые кольца?'],
+  ['Saturn\'s rings are made of billions of pieces of ice and rock.', 'Сатурнның сақиналары миллиардтаған мұз бен тас бөлшектерінен тұрады.', 'Кольца Сатурна состоят из миллиардов кусочков льда и камня.'],
+  ['How long does sunlight take to reach Earth?', 'Күн сәулесі Жерге қанша уақытта жетеді?', 'Сколько солнечный свет летит до Земли?'],
+  ['About 8 minutes', 'Шамамен 8 минутта', 'Около 8 минут'],
+  ['One second', 'Бір секундта', 'Одну секунду'],
+  ['One day', 'Бір күнде', 'Один день'],
+  ['Light travels 300,000 km every second, and the Sun is 150 million km away.', 'Жарық әр секундта 300 000 км жүреді, ал Күн 150 млн км қашықтықта.', 'Свет пролетает 300 000 км в секунду, а до Солнца 150 млн км.'],
+  ['How far away is the Moon?', 'Ай қаншалықты алыс?', 'Как далеко Луна?'],
+  ['About 3,800 km', 'Шамамен 3 800 км', 'Примерно 3 800 км'],
+  ['About 38 million km', 'Шамамен 38 млн км', 'Примерно 38 млн км'],
+  ['All the other planets could fit side by side in the gap between Earth and the Moon!', 'Жер мен Айдың арасына қалған барлық ғаламшарлар қатар тұрып сыйып кетер еді!', 'Между Землёй и Луной поместились бы в ряд все остальные планеты!'],
+  ['Why do we always see the same side of the Moon?', 'Айдың неге әрдайым бір ғана жағын көреміз?', 'Почему мы всегда видим одну сторону Луны?'],
+  ['It spins once each time it goes around Earth', 'Ол Жерді бір айналған сайын өз осінен бір рет айналады', 'Она поворачивается один раз за каждый оборот вокруг Земли'],
+  ['It doesn\'t spin at all', 'Ол мүлдем айналмайды', 'Она совсем не вращается'],
+  ['The other side is always dark', 'Арғы жағы әрдайым қараңғы', 'Другая сторона всегда тёмная'],
+  ['This is called tidal locking. The far side gets just as much sunlight as the near side.', 'Мұны тасымал арқылы бекіну дейді. Айдың арғы беті де бергі беті сияқты күн сәулесін алады.', 'Это называется приливным захватом. Обратная сторона получает столько же солнечного света, сколько видимая.'],
+  ['Where on the Moon could there be water ice?', 'Айдың қай жерінде су мұзы болуы мүмкін?', 'Где на Луне может быть водяной лёд?'],
+  ['In dark craters at the poles', 'Полюстердегі қараңғы кратерлерде', 'В тёмных кратерах у полюсов'],
+  ['On the sunny equator', 'Күн түсетін экваторда', 'На солнечном экваторе'],
+  ['Inside volcanoes', 'Жанартаулардың ішінде', 'Внутри вулканов'],
+  ['Some polar craters never see sunlight, so ice can last there for billions of years.', 'Кейбір полюс кратерлеріне күн сәулесі ешқашан түспейді, сондықтан мұз онда миллиардтаған жыл сақтала алады.', 'В некоторые полярные кратеры никогда не заглядывает Солнце, и лёд там может храниться миллиарды лет.'],
+  ['What is Olympus Mons?', 'Олимп тауы деген не?', 'Что такое гора Олимп?'],
+  ['The biggest volcano in the Solar System', 'Күн жүйесіндегі ең үлкен жанартау', 'Самый большой вулкан Солнечной системы'],
+  ['A crater on the Moon', 'Айдағы кратер', 'Кратер на Луне'],
+  ['A star', 'Жұлдыз', 'Звезда'],
+  ['It is on Mars and is about 22 km high, more than twice as tall as Mount Everest.', 'Ол Марста, биіктігі шамамен 22 км, Эвересттен екі еседен астам биік.', 'Он на Марсе, его высота около 22 км, больше чем в два раза выше Эвереста.'],
+  ['How long is one year on Mars?', 'Марста бір жыл қанша уақытқа созылады?', 'Сколько длится год на Марсе?'],
+  ['About 687 Earth days', 'Шамамен 687 жер күні', 'Около 687 земных дней'],
+  ['365 days', '365 күн', '365 дней'],
+  ['30 days', '30 күн', '30 дней'],
+  ['Mars is farther from the Sun, so one trip around it takes almost two Earth years.', 'Марс Күннен алысырақ, сондықтан оны бір айналу екі жер жылына жуық уақыт алады.', 'Марс дальше от Солнца, поэтому один оборот занимает почти два земных года.'],
+  ['Which moon has a hidden ocean under its ice?', 'Қай серіктің мұзының астында жасырын мұхит бар?', 'У какого спутника под льдом спрятан океан?'],
+  ['Europa', 'Еуропа', 'Европа'],
+  ['Our Moon', 'Біздің Ай', 'Наша Луна'],
+  ['Phobos', 'Фобос', 'Фобос'],
+  ['Jupiter\'s moon Europa may have twice as much water as all of Earth\'s oceans. NASA\'s Europa Clipper is on its way there.', 'Юпитердің серігі Еуропада Жердің барлық мұхиттарынан екі есе көп су болуы мүмкін. NASA-ның Europa Clipper аппараты сонда ұшып барады.', 'На спутнике Юпитера Европе может быть в два раза больше воды, чем во всех океанах Земли. Аппарат NASA Europa Clipper уже летит туда.'],
+  ['What is a light-year?', 'Жарық жылы деген не?', 'Что такое световой год?'],
+  ['How far light travels in a year', 'Жарықтың бір жылда жүретін жолы', 'Расстояние, которое свет пролетает за год'],
+  ['How long a year lasts', 'Бір жылдың ұзақтығы', 'Сколько длится год'],
+  ['A very sunny year', 'Өте шуақты жыл', 'Очень солнечный год'],
+  ['One light-year is about 9.5 trillion km.', 'Бір жарық жылы шамамен 9,5 триллион км.', 'Один световой год — это около 9,5 триллиона км.'],
+  ['What is the Sun?', 'Күн деген не?', 'Что такое Солнце?'],
+  ['A planet', 'Ғаламшар', 'Планета'],
+  ['A giant campfire', 'Алып алау', 'Огромный костёр'],
+  ['The Sun is a medium-sized star: a ball of hot gas powered by nuclear fusion.', 'Күн — орташа жұлдыз: термоядролық синтезден қуат алатын ыстық газ шары.', 'Солнце — звезда средних размеров: шар из горячего газа, который светит благодаря термоядерному синтезу.'],
+  ['Which planet spins lying on its side?', 'Қай ғаламшар қырынан жатып айналады?', 'Какая планета вращается, лёжа на боку?'],
+  ['Uranus', 'Уран', 'Уран'],
+  ['Neptune', 'Нептун', 'Нептун'],
+  ['Uranus is tilted about 98 degrees, so it rolls around the Sun like a ball.', 'Уран шамамен 98 градусқа қисайған, сондықтан Күнді доп сияқты домалап айналады.', 'Уран наклонён примерно на 98 градусов, поэтому катится вокруг Солнца, как мяч.'],
+  ['Which planet has the shortest day?', 'Қай ғаламшардың тәулігі ең қысқа?', 'У какой планеты самые короткие сутки?'],
+  ['Jupiter spins around once in about 10 hours.', 'Юпитер өз осінен шамамен 10 сағатта бір рет айналады.', 'Юпитер делает оборот вокруг своей оси примерно за 10 часов.'],
+  ['If you drop a hammer and a feather on the Moon, which lands first?', 'Айда балға мен қауырсынды бірге тастасаң, қайсысы бірінші түседі?', 'Если на Луне уронить молоток и перо, что упадёт первым?'],
+  ['They land together', 'Екеуі бірге түседі', 'Они упадут одновременно'],
+  ['The hammer', 'Балға', 'Молоток'],
+  ['The feather', 'Қауырсын', 'Перо'],
+  ['Apollo 15 astronaut David Scott tried it in 1971. With no air, both landed at the same moment.', '«Аполлон-15» астронавты Дэвид Скотт мұны 1971 жылы сынап көрді. Ауа жоқ болғандықтан, екеуі бір сәтте түсті.', 'Астронавт «Аполлона-15» Дэвид Скотт проверил это в 1971 году. Без воздуха оба предмета упали одновременно.'],
+  ['How much would you weigh on the Moon?', 'Айда салмағың қанша болар еді?', 'Сколько бы ты весил на Луне?'],
+  ['About one sixth of your Earth weight', 'Жердегі салмағыңның шамамен алтыдан бірі', 'Примерно шестую часть земного веса'],
+  ['The same', 'Дәл сондай', 'Столько же'],
+  ['Twice as much', 'Екі есе көп', 'В два раза больше'],
+  ['The Moon\'s gravity is about one sixth of Earth\'s, so astronauts can bounce around.', 'Айдың тартылыс күші Жердікінің шамамен алтыдан бірі, сондықтан астронавттар секіріп жүре алады.', 'Притяжение Луны примерно в шесть раз слабее земного, поэтому астронавты там подпрыгивают.'],
+  ['What keeps the Moon going around Earth?', 'Айды Жерді айналдырып тұрған не?', 'Что заставляет Луну летать вокруг Земли?'],
+  ['Gravity', 'Тартылыс күші', 'Притяжение'],
+  ['Wind', 'Жел', 'Ветер'],
+  ['Magnets', 'Магниттер', 'Магниты'],
+  ['The Moon is always falling toward Earth, but it moves sideways so fast that it keeps missing!', 'Ай әрдайым Жерге қарай құлап келеді, бірақ бүйірге соншалық жылдам қозғалғандықтан, үнемі жерге түспей өтіп кетеді!', 'Луна всё время падает на Землю, но так быстро движется вбок, что всё время пролетает мимо!'],
+
+  // ---- rockets
+  ['About how fast does the space station fly?', 'Ғарыш станциясы шамамен қандай жылдамдықпен ұшады?', 'С какой скоростью летит космическая станция?'],
+  ['8 km every second', 'Секундына 8 км', '8 км в секунду'],
+  ['100 km per hour', 'Сағатына 100 км', '100 км в час'],
+  ['As fast as a bike', 'Велосипедтей', 'Как велосипед'],
+  ['That is about 28,000 km per hour: from Almaty to Astana in about 2 minutes!', 'Бұл сағатына шамамен 28 000 км: Алматыдан Астанаға шамамен 2 минутта!', 'Это около 28 000 км в час: из Алматы в Астану примерно за 2 минуты!'],
+  ['Why do rockets have several parts called stages?', 'Зымырандарда неге сатылар деп аталатын бірнеше бөлік бар?', 'Почему у ракет несколько частей — ступеней?'],
+  ['They drop empty tanks to get lighter', 'Жеңілдеу үшін бос бактарын тастайды', 'Чтобы сбрасывать пустые баки и становиться легче'],
+  ['To carry more passengers', 'Көбірек жолаушы алу үшін', 'Чтобы брать больше пассажиров'],
+  ['To look taller', 'Биігірек көріну үшін', 'Чтобы казаться выше'],
+  ['Dropping empty tanks means the engines push less weight, so the rocket can go much faster.', 'Бос бактарды тастаса, қозғалтқыштар азырақ салмақ итереді, сондықтан зымыран әлдеқайда жылдам ұшады.', 'Когда пустые баки сброшены, двигателям легче, и ракета разгоняется гораздо сильнее.'],
+  ['What pushes a rocket up?', 'Зымыранды жоғары не итереді?', 'Что толкает ракету вверх?'],
+  ['Hot gas rushing out of the bottom', 'Астынан атқылаған ыстық газ', 'Горячий газ, вырывающийся снизу'],
+  ['The air under it', 'Астындағы ауа', 'Воздух под ней'],
+  ['Pushing gas down pushes the rocket up. It works even in empty space, where there is no air.', 'Газды төмен итерсе, зымыран жоғары итеріледі. Бұл ауасыз бос ғарышта да жұмыс істейді.', 'Толкая газ вниз, ракета толкает себя вверх. Это работает даже в пустом космосе, где нет воздуха.'],
+  ['Why do many rockets launch toward the east?', 'Көп зымыран неге шығысқа қарай ұшырылады?', 'Почему многие ракеты стартуют на восток?'],
+  ['Earth\'s spin gives them a free push', 'Жердің айналуы оларды тегін итереді', 'Вращение Земли даёт им бесплатный толчок'],
+  ['The wind always blows east', 'Жел әрдайым шығысқа соғады', 'Ветер всегда дует на восток'],
+  ['It is a tradition', 'Бұл дәстүр', 'Это традиция'],
+  ['At the equator Earth spins at about 1,670 km per hour, a free speed boost.', 'Экваторда Жер сағатына шамамен 1 670 км жылдамдықпен айналады. Бұл тегін қосымша жылдамдық.', 'На экваторе Земля вращается со скоростью около 1 670 км в час — это бесплатная прибавка к скорости.'],
+  ['What is special about a Falcon 9 rocket\'s first stage?', 'Falcon 9 зымыранының бірінші сатысының ерекшелігі неде?', 'Чем особенна первая ступень ракеты Falcon 9?'],
+  ['It lands and flies again', 'Ол қонып, қайта ұшады', 'Она садится и летит снова'],
+  ['It is made of wood', 'Ол ағаштан жасалған', 'Она сделана из дерева'],
+  ['It has no engines', 'Оның қозғалтқышы жоқ', 'У неё нет двигателей'],
+  ['Reusing boosters makes going to space much cheaper.', 'Үдеткіштерді қайта пайдалану ғарышқа ұшуды әлдеқайда арзандатады.', 'Повторное использование ступеней делает полёты в космос намного дешевле.'],
+  ['What is a rideshare launch?', 'Бірлескен ұшыру деген не?', 'Что такое попутный запуск?'],
+  ['Many small satellites share one rocket', 'Көп шағын серік бір зымыранмен бірге ұшады', 'Много маленьких спутников летят на одной ракете'],
+  ['Astronauts share a car', 'Ғарышкерлер бір көлікпен жүреді', 'Космонавты едут на одной машине'],
+  ['Two rockets launch together', 'Екі зымыран бірге ұшады', 'Две ракеты стартуют вместе'],
+  ['Sharing a rocket is like a carpool: much cheaper, but you go where the big customer goes.', 'Зымыранды бөлісу бір көлікке бірге отыру сияқты: әлдеқайда арзан, бірақ үлкен тапсырыс беруші баратын жерге барасың.', 'Делить ракету — как ехать в попутке: гораздо дешевле, но едешь туда, куда нужно главному заказчику.'],
+  ['How fast must you go to escape Earth\'s gravity?', 'Жердің тартылысынан шығу үшін қандай жылдамдық керек?', 'С какой скоростью надо лететь, чтобы улететь от притяжения Земли?'],
+  ['About 11 km per second', 'Секундына шамамен 11 км', 'Около 11 км в секунду'],
+  ['About 1 km per hour', 'Сағатына шамамен 1 км', 'Около 1 км в час'],
+  ['About 1,000 km per second', 'Секундына шамамен 1 000 км', 'Около 1 000 км в секунду'],
+  ['At about 11.2 km per second, a spacecraft can leave Earth and never fall back.', 'Секундына шамамен 11,2 км жылдамдықпен аппарат Жерден кетіп, қайта құламайды.', 'На скорости около 11,2 км в секунду аппарат может покинуть Землю и больше не упасть обратно.'],
+  ['Which giant rocket carried astronauts to the Moon in the Apollo program?', '«Аполлон» бағдарламасында астронавттарды Айға қай алып зымыран апарды?', 'Какая гигантская ракета везла астронавтов к Луне по программе «Аполлон»?'],
+  ['Saturn V', 'Сатурн-5', 'Сатурн-5'],
+  ['Soyuz', 'Союз', 'Союз'],
+  ['Falcon 9', 'Falcon 9', 'Falcon 9'],
+  ['Saturn V was 110 m tall, taller than a 30-storey building.', '«Сатурн-5» биіктігі 110 м болды, 30 қабатты үйден де биік.', '«Сатурн-5» был высотой 110 м — выше 30-этажного дома.'],
+  ['What does "T minus 10" mean?', '«T минус 10» нені білдіреді?', 'Что значит «T минус 10»?'],
+  ['10 seconds before launch', 'Ұшыруға 10 секунд қалды', 'До старта 10 секунд'],
+  ['10 minutes after launch', 'Ұшырудан кейін 10 минут өтті', 'Прошло 10 минут после старта'],
+  ['10 astronauts on board', 'Бортта 10 ғарышкер бар', 'На борту 10 космонавтов'],
+  ['The countdown helps the whole team check everything in the right order.', 'Кері санақ бүкіл командаға бәрін дұрыс ретпен тексеруге көмектеседі.', 'Обратный отсчёт помогает всей команде проверить всё в правильном порядке.'],
+  ['What is a gravity assist?', 'Гравитациялық маневр деген не?', 'Что такое гравитационный манёвр?'],
+  ['Swinging past a planet to speed up', 'Жылдамдық алу үшін ғаламшардың жанынан ұшып өту', 'Пролёт рядом с планетой, чтобы разогнаться'],
+  ['Pushing a rocket by hand', 'Зымыранды қолмен итеру', 'Толкать ракету руками'],
+  ['Carrying extra fuel', 'Қосымша отын алу', 'Брать лишнее топливо'],
+  ['Voyager and Juno used gravity assists to travel faster without burning extra fuel.', '«Вояджер» мен «Юнона» артық отын жақпай жылдамырақ ұшу үшін гравитациялық маневр жасады.', '«Вояджер» и «Юнона» разгонялись гравитационными манёврами, не тратя лишнего топлива.'],
+  ['Which rocket carries astronauts to space from Baikonur?', 'Байқоңырдан ғарышкерлерді қай зымыран ұшырады?', 'Какая ракета возит космонавтов с Байконура?'],
+  ['Ariane 6', 'Ariane 6', 'Ariane 6'],
+  ['Soyuz rockets have launched from Baikonur since the 1960s, more often than any other rocket family.', '«Союз» зымырандары Байқоңырдан 1960 жылдардан бері ұшып келеді. Бұл ең көп ұшырылған зымырандар отбасы.', 'Ракеты «Союз» стартуют с Байконура с 1960-х годов — чаще, чем любое другое семейство ракет.'],
+  ['Why can\'t you hear anything in space?', 'Ғарышта неге ештеңе естілмейді?', 'Почему в космосе ничего не слышно?'],
+  ['There is no air to carry sound', 'Дыбысты жеткізетін ауа жоқ', 'Нет воздуха, который передаёт звук'],
+  ['Space is too cold', 'Ғарыш тым суық', 'В космосе слишком холодно'],
+  ['Helmets block the sound', 'Дулыға дыбысты өткізбейді', 'Шлемы не пропускают звук'],
+  ['Sound needs air, water or something else to travel through.', 'Дыбыс таралу үшін ауа, су немесе басқа зат керек.', 'Звуку нужен воздух, вода или что-то ещё, чтобы распространяться.'],
+
+  // ---- space history
+  ['Who was the first person in space?', 'Ғарышқа бірінші ұшқан адам кім?', 'Кто первым полетел в космос?'],
+  ['Yuri Gagarin', 'Юрий Гагарин', 'Юрий Гагарин'],
+  ['Neil Armstrong', 'Нил Армстронг', 'Нил Армстронг'],
+  ['Valentina Tereshkova', 'Валентина Терешкова', 'Валентина Терешкова'],
+  ['On 12 April 1961, Gagarin flew once around Earth in Vostok 1. He launched from Baikonur.', '1961 жылғы 12 сәуірде Гагарин «Восток-1» кемесімен Жерді бір рет айналып ұшты. Ол Байқоңырдан ұшырылды.', '12 апреля 1961 года Гагарин облетел Землю на корабле «Восток-1». Он стартовал с Байконура.'],
+  ['Who was the first person to walk on the Moon?', 'Айда бірінші болып жүрген адам кім?', 'Кто первым прошёл по Луне?'],
+  ['Buzz Lightyear', 'Базз Лайтер', 'Базз Лайтер'],
+  ['Neil Armstrong stepped onto the Moon in July 1969, during the Apollo 11 mission.', 'Нил Армстронг 1969 жылдың шілдесінде «Аполлон-11» миссиясы кезінде Айға қадам басты.', 'Нил Армстронг ступил на Луну в июле 1969 года во время миссии «Аполлон-11».'],
+  ['Who was the first woman in space?', 'Ғарышқа ұшқан алғашқы әйел кім?', 'Кто первая женщина в космосе?'],
+  ['Sally Ride', 'Салли Райд', 'Салли Райд'],
+  ['Amelia Earhart', 'Амелия Эрхарт', 'Амелия Эрхарт'],
+  ['She flew in 1963 on Vostok 6 and went around Earth 48 times.', 'Ол 1963 жылы «Восток-6» кемесімен ұшып, Жерді 48 рет айналды.', 'Она полетела в 1963 году на «Востоке-6» и облетела Землю 48 раз.'],
+  ['What was the first artificial satellite?', 'Алғашқы жасанды серік қандай болды?', 'Какой был первый искусственный спутник?'],
+  ['Sputnik 1', 'Спутник-1', 'Спутник-1'],
+  ['Hubble', 'Хаббл', 'Хаббл'],
+  ['Voyager 1', 'Вояджер-1', 'Вояджер-1'],
+  ['Sputnik 1 was launched from Baikonur on 4 October 1957. It was only 58 cm wide.', '«Спутник-1» 1957 жылғы 4 қазанда Байқоңырдан ұшырылды. Оның ені небәрі 58 см болды.', '«Спутник-1» запустили с Байконура 4 октября 1957 года. Он был всего 58 см в диаметре.'],
+  ['Which spacecraft has traveled farthest from Earth?', 'Жерден ең алысқа қай аппарат ұшып кетті?', 'Какой аппарат улетел дальше всех от Земли?'],
+  ['Apollo 11', 'Аполлон-11', 'Аполлон-11'],
+  ['The space station', 'Ғарыш станциясы', 'Космическая станция'],
+  ['Launched in 1977, Voyager 1 is now in interstellar space, more than 24 billion km away.', '1977 жылы ұшырылған «Вояджер-1» қазір жұлдызаралық кеңістікте, 24 млрд км-ден астам қашықтықта.', 'Запущенный в 1977 году «Вояджер-1» сейчас в межзвёздном пространстве, дальше чем в 24 млрд км.'],
+  ['Which famous telescope has been in orbit since 1990?', 'Қай әйгілі телескоп 1990 жылдан бері орбитада?', 'Какой знаменитый телескоп работает на орбите с 1990 года?'],
+  ['James Webb', 'Джеймс Уэбб', 'Джеймс Уэбб'],
+  ['Galileo\'s telescope', 'Галилейдің телескопы', 'Телескоп Галилея'],
+  ['Astronauts visited Hubble five times to repair and upgrade it.', 'Астронавттар «Хабблды» жөндеп, жаңарту үшін оған бес рет барды.', 'Астронавты пять раз летали к «Хабблу», чтобы чинить и улучшать его.'],
+  ['Who was the first animal to orbit Earth?', 'Жерді орбитада айналған алғашқы жануар кім?', 'Какое животное первым облетело Землю по орбите?'],
+  ['The dog Laika', 'Лайка есімді ит', 'Собака Лайка'],
+  ['A cat', 'Мысық', 'Кошка'],
+  ['A goldfish', 'Алтын балық', 'Золотая рыбка'],
+  ['Laika flew on Sputnik 2 in 1957. In 1960 the dogs Belka and Strelka orbited Earth and came home safely.', 'Лайка 1957 жылы «Спутник-2»-мен ұшты. 1960 жылы Белка мен Стрелка иттері Жерді айналып, аман-есен оралды.', 'Лайка полетела на «Спутнике-2» в 1957 году. В 1960 году собаки Белка и Стрелка облетели Землю и благополучно вернулись.'],
+  ['What was Artemis II?', '«Артемида II» деген не еді?', 'Что такое «Артемида II»?'],
+  ['A crewed flight around the Moon', 'Айды айнала адамдармен ұшу', 'Пилотируемый полёт вокруг Луны'],
+  ['A Mars rover', 'Марс роверы', 'Марсоход'],
+  ['A space telescope', 'Ғарыш телескопы', 'Космический телескоп'],
+  ['In April 2026 four astronauts flew around the Moon, the first crewed trip to the Moon since 1972.', '2026 жылдың сәуірінде төрт астронавт Айды айналып ұшты. Бұл 1972 жылдан бергі Айға алғашқы адамдармен сапар.', 'В апреле 2026 года четыре астронавта облетели Луну — это первый полёт людей к Луне с 1972 года.'],
+  ['How many people have walked on the Moon?', 'Айда қанша адам жүрді?', 'Сколько людей ходили по Луне?'],
+  ['They all walked there between 1969 and 1972, during the Apollo missions.', 'Олардың бәрі 1969–1972 жылдары «Аполлон» миссиялары кезінде жүрді.', 'Все они побывали там с 1969 по 1972 год во время миссий «Аполлон».'],
+  ['Which rover found signs that Mars once had lakes?', 'Марста бір кезде көлдер болғанын қай ровер анықтады?', 'Какой марсоход нашёл следы древних озёр на Марсе?'],
+  ['Curiosity', 'Curiosity', 'Curiosity'],
+  ['Lunokhod 1', 'Луноход-1', 'Луноход-1'],
+  ['Since 2012 Curiosity has explored Gale crater, the bed of an ancient lake.', 'Curiosity 2012 жылдан бері ежелгі көлдің түбі болған Гейл кратерін зерттеп жүр.', 'С 2012 года Curiosity изучает кратер Гейл — дно древнего озера.'],
+  ['What is the International Space Station?', 'Халықаралық ғарыш станциясы деген не?', 'Что такое Международная космическая станция?'],
+  ['A home and lab where astronauts live in orbit', 'Ғарышкерлер орбитада тұратын үй әрі зертхана', 'Дом и лаборатория, где космонавты живут на орбите'],
+  ['A rocket factory on the Moon', 'Айдағы зымыран зауыты', 'Ракетный завод на Луне'],
+  ['A TV channel', 'Телеарна', 'Телеканал'],
+  ['People have lived on board without a break since November 2000.', '2000 жылдың қарашасынан бері бортта адамдар үздіксіз тұрып келеді.', 'Люди живут на борту без перерыва с ноября 2000 года.'],
+  ['What powers the Perseverance rover?', 'Perseverance роверін не қуаттандырады?', 'Откуда берёт энергию марсоход Perseverance?'],
+  ['A nuclear battery', 'Ядролық батарея', 'Ядерная батарея'],
+  ['A diesel engine', 'Дизель қозғалтқышы', 'Дизельный двигатель'],
+  ['It turns heat from plutonium into about 110 watts of electricity, day and night.', 'Ол плутонийдің жылуын күндіз-түні шамамен 110 ватт электрге айналдырады.', 'Он превращает тепло плутония примерно в 110 ватт электричества днём и ночью.'],
+
+  // ---- Kazakhstan in space
+  ['In which country is the Baikonur Cosmodrome?', 'Байқоңыр ғарыш айлағы қай елде орналасқан?', 'В какой стране находится космодром Байконур?'],
+  ['Kazakhstan', 'Қазақстан', 'Казахстан'],
+  ['Japan', 'Жапония', 'Япония'],
+  ['Brazil', 'Бразилия', 'Бразилия'],
+  ['Baikonur is the world\'s first and largest space launch site. It is in the Kyzylorda Region.', 'Байқоңыр — әлемдегі ең алғашқы әрі ең үлкен ғарыш айлағы. Ол Қызылорда облысында орналасқан.', 'Байконур — первый и самый большой космодром в мире. Он находится в Кызылординской области.'],
+  ['Who was the first Kazakh cosmonaut?', 'Алғашқы қазақ ғарышкері кім?', 'Кто первый казахский космонавт?'],
+  ['Tokhtar Aubakirov', 'Тоқтар Әубәкіров', 'Токтар Аубакиров'],
+  ['Tokhtar Aubakirov flew to the Mir space station in October 1991.', 'Тоқтар Әубәкіров 1991 жылдың қазанында «Мир» ғарыш станциясына ұшты.', 'Токтар Аубакиров полетел на космическую станцию «Мир» в октябре 1991 года.'],
+  ['Which Kazakh cosmonaut flew to space three times?', 'Қай қазақ ғарышкері ғарышқа үш рет ұшты?', 'Какой казахский космонавт летал в космос три раза?'],
+  ['Talgat Musabayev', 'Талғат Мусабаев', 'Талгат Мусабаев'],
+  ['Aidyn Aimbetov', 'Айдын Айымбетов', 'Айдын Аимбетов'],
+  ['Talgat Musabayev flew in 1994, 1998 and 2001 and spent more than 340 days in space.', 'Талғат Мусабаев 1994, 1998 және 2001 жылдары ұшып, ғарышта 340 күннен астам уақыт болды.', 'Талгат Мусабаев летал в 1994, 1998 и 2001 годах и провёл в космосе больше 340 дней.'],
+  ['Who flew to the space station for Kazakhstan in 2015?', '2015 жылы Қазақстан атынан ғарыш станциясына кім ұшты?', 'Кто полетел на космическую станцию от Казахстана в 2015 году?'],
+  ['Aidyn Aimbetov spent about 10 days on the International Space Station in September 2015.', 'Айдын Айымбетов 2015 жылдың қыркүйегінде Халықаралық ғарыш станциясында шамамен 10 күн болды.', 'Айдын Аимбетов провёл около 10 дней на Международной космической станции в сентябре 2015 года.'],
+  ['What are KazSat satellites for?', 'KazSat серіктері не үшін керек?', 'Для чего нужны спутники KazSat?'],
+  ['TV, phone and internet links', 'Теледидар, телефон және интернет байланысы үшін', 'Для телевидения, телефона и интернета'],
+  ['Taking photos of Mars', 'Марсты суретке түсіру үшін', 'Чтобы фотографировать Марс'],
+  ['Mining asteroids', 'Астероидтардан кен өндіру үшін', 'Чтобы добывать ископаемые на астероидах'],
+  ['KazSat are Kazakhstan\'s own communication satellites, high up in geostationary orbit.', 'KazSat — Қазақстанның өз байланыс серіктері. Олар биіктегі геостационарлық орбитада ұшады.', 'KazSat — собственные спутники связи Казахстана высоко на геостационарной орбите.'],
+  ['Why did the Aral Sea shrink?', 'Арал теңізі неге тартылды?', 'Почему высохло Аральское море?'],
+  ['Its rivers were used to water fields', 'Оның өзендерінің суы егістікті суаруға алынды', 'Воду его рек забрали на полив полей'],
+  ['A meteor hit it', 'Оған метеор құлады', 'В него упал метеорит'],
+  ['It froze', 'Ол қатып қалды', 'Оно замёрзло'],
+  ['Landsat satellites have photographed it since 1972, so we can see exactly how it changed.', 'Landsat серіктері оны 1972 жылдан бері суретке түсіріп келеді, сондықтан оның қалай өзгергенін нақты көре аламыз.', 'Спутники Landsat снимают его с 1972 года, поэтому видно, как именно оно менялось.'],
+  ['Which satellites take photos of Kazakhstan\'s land?', 'Қазақстан жерін қай серіктер суретке түсіреді?', 'Какие спутники фотографируют землю Казахстана?'],
+  ['KazEOSat', 'KazEOSat', 'KazEOSat'],
+  ['Voyager', 'Вояджер', 'Вояджер'],
+  ['KazEOSat-1 and KazEOSat-2 have watched Kazakhstan\'s fields, rivers and cities since 2014.', 'KazEOSat-1 мен KazEOSat-2 2014 жылдан бері Қазақстанның егістіктерін, өзендері мен қалаларын бақылап келеді.', 'KazEOSat-1 и KazEOSat-2 с 2014 года наблюдают за полями, реками и городами Казахстана.'],
+  ['Why was Baikonur built in the Kazakh steppe?', 'Байқоңыр неге қазақ даласында салынды?', 'Почему Байконур построили в казахской степи?'],
+  ['It is flat, empty and quite far south', 'Ол тегіс, адам аз және едәуір оңтүстікте', 'Там ровно, безлюдно и довольно южно'],
+  ['It is next to the ocean', 'Ол мұхиттың жағасында', 'Он у океана'],
+  ['It is on top of a mountain', 'Ол таудың басында', 'Он на вершине горы'],
+  ['Rocket parts can fall on empty land far from towns, and being farther south helps rockets reach orbit.', 'Зымыран бөліктері қалалардан алыс бос жерге түсе алады, ал оңтүстікте болу зымыранға орбитаға шығуға көмектеседі.', 'Части ракет падают на пустую землю вдали от городов, а южное положение помогает ракетам выходить на орбиту.'],
+
+  // ---- Earth from space
+  ['How much of Earth is covered by water?', 'Жердің қанша бөлігін су алып жатыр?', 'Какая часть Земли покрыта водой?'],
+  ['About 71%', 'Шамамен 71%', 'Около 71%'],
+  ['About 10%', 'Шамамен 10%', 'Около 10%'],
+  ['About 50%', 'Шамамен 50%', 'Около 50%'],
+  ['That is why Earth looks like a blue marble from space.', 'Сондықтан Жер ғарыштан көгілдір моншақ сияқты көрінеді.', 'Поэтому из космоса Земля похожа на голубой шарик.'],
+  ['Can you see the Great Wall of China from the Moon?', 'Айдан Ұлы Қытай қорғанын көруге бола ма?', 'Видна ли Великая Китайская стена с Луны?'],
+  ['No, it is far too thin', 'Жоқ, ол тым жіңішке', 'Нет, она слишком узкая'],
+  ['Yes, easily', 'Иә, оңай', 'Да, легко'],
+  ['Only at night', 'Тек түнде', 'Только ночью'],
+  ['The wall is long but narrow. Even from low orbit it is very hard to spot.', 'Қорған ұзын, бірақ жіңішке. Төмен орбитадан да оны байқау өте қиын.', 'Стена длинная, но узкая. Даже с низкой орбиты её очень трудно заметить.'],
+  ['What do weather satellites watch?', 'Ауа райы серіктері нені бақылайды?', 'За чем следят метеоспутники?'],
+  ['Clouds and storms', 'Бұлттар мен дауылдарды', 'За облаками и бурями'],
+  ['Fish', 'Балықтарды', 'За рыбами'],
+  ['Traffic jams', 'Көлік кептелістерін', 'За пробками'],
+  ['They help forecasters warn people about big storms days ahead.', 'Олар синоптиктерге адамдарды үлкен дауыл туралы бірнеше күн бұрын ескертуге көмектеседі.', 'Они помогают синоптикам предупреждать людей о сильных бурях за несколько дней.'],
+  ['How can satellites help firefighters?', 'Серіктер өрт сөндірушілерге қалай көмектеседі?', 'Как спутники помогают пожарным?'],
+  ['Heat cameras spot new fires', 'Жылу камералары жаңа өрттерді табады', 'Тепловые камеры замечают новые пожары'],
+  ['They drop water', 'Олар су төгеді', 'Они сбрасывают воду'],
+  ['They blow out the flames', 'Олар жалынды үрлеп сөндіреді', 'Они задувают пламя'],
+  ['Infrared cameras see heat, even through thick smoke.', 'Инфрақызыл камералар қалың түтін арқылы да жылуды көреді.', 'Инфракрасные камеры видят тепло даже сквозь густой дым.'],
+  ['What does the ozone layer do?', 'Озон қабаты не істейді?', 'Что делает озоновый слой?'],
+  ['Blocks harmful ultraviolet sunlight', 'Күннің зиянды ультракүлгін сәулесін бөгейді', 'Задерживает вредный ультрафиолет Солнца'],
+  ['Makes the sky blue', 'Аспанды көк етеді', 'Делает небо голубым'],
+  ['Holds satellites up', 'Серіктерді ұстап тұрады', 'Держит спутники'],
+  ['Satellites have watched the ozone hole over Antarctica slowly start to heal.', 'Серіктер Антарктида үстіндегі озон тесігінің баяу жазыла бастағанын бақылап отыр.', 'Спутники видят, как озоновая дыра над Антарктидой понемногу начала затягиваться.'],
+  ['Why is the sky blue?', 'Аспан неге көк?', 'Почему небо голубое?'],
+  ['Air scatters blue sunlight the most', 'Ауа күн сәулесінің көк бөлігін ең көп шашыратады', 'Воздух сильнее всего рассеивает синий свет'],
+  ['The ocean reflects onto it', 'Мұхит оған шағылысады', 'В нём отражается океан'],
+  ['Space is blue', 'Ғарыш көк түсті', 'Космос голубой'],
+  ['In space there is no air to scatter light, so the sky looks black.', 'Ғарышта жарықты шашырататын ауа жоқ, сондықтан аспан қара болып көрінеді.', 'В космосе нет воздуха, который рассеивает свет, поэтому небо там чёрное.'],
+  ['How many sunrises do space station astronauts see each day?', 'Ғарыш станциясындағы ғарышкерлер күніне неше рет күннің шығуын көреді?', 'Сколько рассветов в день видят космонавты на станции?'],
+  ['About 16', 'Шамамен 16', 'Около 16'],
+  ['One', 'Біреу', 'Один'],
+  ['About 100', 'Шамамен 100', 'Около 100'],
+  ['They go around Earth every 92 minutes, so a new day starts every hour and a half.', 'Олар Жерді әр 92 минут сайын айналады, сондықтан жаңа күн әр бір жарым сағат сайын басталады.', 'Они облетают Землю каждые 92 минуты, поэтому новый день начинается каждые полтора часа.'],
 ]);
 
 </script>
@@ -5772,12 +6547,48 @@ function setLang(k) {
 }
 function topBar() {
   const where = st.scenId && ['build', 'review', 'flight', 'report', 'crew'].includes(st.screen) ? sName(scen()) : '';
-  return `<header class="top"><button class="brand" data-act="home" aria-label="Home">${A.orbi(38)}<span>Mission Lab</span></button>
+  const bt = backTarget();
+  return `<header class="top">${bt ? `<button class="btn ghost backbtn" data-act="goBack" aria-label="Back">${A.icon('back')}<span>Back</span></button>` : ''}<button class="brand" data-act="home" aria-label="Home">${A.orbi(38)}<span>Mission Lab</span></button>
     ${where ? `<span class="where">${esc(where)}${st.versus ? `, ${esc(st.versus.teams[st.versus.idx].name)}` : ''}</span>` : ''}<span class="grow"></span>
-    <div class="mode-pill" role="group" aria-label="Game mode"><button data-act="easy" data-v="1" aria-pressed="${st.easy}">Easy</button><button data-act="easy" data-v="0" aria-pressed="${!st.easy}">Engineer</button></div>
+    <div class="mode-pill wideonly" role="group" aria-label="Game mode"><button data-act="easy" data-v="1" aria-pressed="${st.easy}">Easy</button><button data-act="easy" data-v="0" aria-pressed="${!st.easy}">Engineer</button></div>
     ${st.screen === 'flight' ? '' : `<button class="dustchip" data-act="shop" aria-label="${num(prof.dust)} Stardust. Open the shop">${A.icon('dust')}<b>${num(prof.dust)}</b></button>`}
-    ${langBtn()}${soundBtn()}
-    <button class="btn ghost small" data-act="learn">Science corner</button></header>`;
+    <span class="wideonly topgroup">${langBtn()}${soundBtn()}
+    <button class="btn ghost small" data-act="learn">Science corner</button></span>
+    <button class="btn ghost menubtn" data-act="menu" aria-haspopup="dialog" aria-label="Menu">${A.icon('menu')}</button></header>`;
+}
+// where the Back button goes from each screen
+function backTarget() {
+  const sc = st.screen;
+  if (sc === 'home' || sc === 'story') return null;
+  if (sc === 'flight') return mission && mission.over ? 'report' : null;
+  return { map: 'home', build: 'map', review: 'build', report: 'map', crew: 'map', showdown: 'map', nasa: 'map', custom: 'map', hangar: 'home', board: 'home', badges: 'home' }[sc] || (SIDE.includes(sc) ? (prevScreen && prevScreen !== sc ? prevScreen : 'home') : 'home');
+}
+function goBack() {
+  const t = backTarget(); if (!t) return;
+  if (st.screen === 'build') { confirmLeave(t); return; }
+  if (t === 'map') st.versus = null;
+  if (t === 'report' && mission && mission.over) { cancelAnimationFrame(raf); }
+  go(t);
+}
+// leaving the workshop: offer to save the spaceship first
+function confirmLeave(t) {
+  closeModal(); const md = document.createElement('div'); md.className = 'modal';
+  md.innerHTML = `<div class="card leavecard" role="dialog" aria-modal="true" aria-label="Leave the workshop?"><h3>Leave the workshop?</h3><p>Your spaceship will be lost unless you save it in the hangar.</p>
+    <div class="row"><button class="btn green" data-act="saveLeave" data-to="${t}">Save and leave</button><button class="btn" data-act="leaveNow" data-to="${t}">Leave without saving</button><button class="btn ghostdark" data-act="closeModal">Stay</button></div></div>`;
+  document.body.appendChild(md); const b = md.querySelector('.btn.green'); if (b) b.focus();
+}
+// the phone menu: everything that does not fit in the top bar
+function menuPop() {
+  closeSound(); const on = musicWanted();
+  const p = document.createElement('div'); p.className = 'soundpop menupop'; p.id = 'soundpop'; p.setAttribute('role', 'dialog'); p.setAttribute('aria-label', 'Menu');
+  p.innerHTML = `<h3>Menu</h3>
+    <div class="mrow"><span>Game mode</span><div class="mode-pill"><button data-act="easy" data-v="1" aria-pressed="${st.easy}">Easy</button><button data-act="easy" data-v="0" aria-pressed="${!st.easy}">Engineer</button></div></div>
+    <div class="mrow" data-notr><span>Language / Тіл / Язык</span><div class="langrow">${I18.LANGS.map(([k, n]) => `<button class="langopt ${I18.lang === k ? 'on' : ''}" data-act="setLang" data-v="${k}">${n}</button>`).join('')}</div></div>
+    <div class="mrow"><span>Music</span><button class="toggle ${on ? 'on' : ''}" data-act="music" aria-pressed="${on}"><i></i><span>${on ? 'On' : 'Off'}</span></button></div>
+    <div class="mrow"><span>Sound effects</span><button class="toggle ${A.muted ? '' : 'on'}" data-act="sound" aria-pressed="${!A.muted}"><i></i><span>${A.muted ? 'Off' : 'On'}</span></button></div>
+    <div class="mlinks"><button class="btn small" data-act="home">${A.icon('home')} Home</button><button class="btn small" data-act="learn">Science corner</button><button class="btn small" data-act="howto">How to play</button></div>
+    <div class="row"><button class="btn yellow small" data-act="closeSound">Done</button></div>`;
+  document.body.appendChild(p);
 }
 
 /* =====================================================================
@@ -5800,7 +6611,7 @@ function home() {
     <div class="buttons"><button class="btn yellow huge" data-act="play">Play</button></div>
     <div class="hooks">
       <button class="hooktile pink" data-act="daily">${A.icon('calendar')}<b>Daily mission</b><span>${done ? `Done today with ${done.stars} star${done.stars === 1 ? '' : 's'}. New one tomorrow!` : `Today's twist: ${esc(dl.twist.name)}`}</span></button>
-      <button class="hooktile green" data-act="quiz">${A.icon('quiz')}<b>Orbi's quiz</b><span>${prof.quizDay === today() ? 'Practice round' : '3 questions. Win Stardust!'}</span></button>
+      <button class="hooktile green" data-act="quiz">${A.icon('quiz')}<b>Orbi's quiz</b><span>${prof.quizDay === today() ? 'Practice round' : '5 questions. Win Stardust!'}</span></button>
       <button class="hooktile yellow" data-act="shop">${A.icon('shop')}<b>Shop</b><span>${prof.capsules ? `${prof.capsules} free capsule${prof.capsules > 1 ? 's' : ''} to open!` : 'Paint, hats and sparks'}</span></button>
       <button class="hooktile cyan" data-act="atlas">${A.icon('book')}<b>Space Atlas</b><span>${prof.cards.length} of ${HK.CARDS.length} cards found</span></button>
     </div>
@@ -6134,7 +6945,16 @@ function build() {
     <p class="tiny">Tap a meter and Orbi explains it. ★ means extra important for this mission.</p></aside>
   <div class="buildmain"><div class="stepbar" id="steps" aria-label="Build steps">${stepsHTML()}</div>
   <div class="build"><div class="stage" id="stage">${stageHTML()}</div><main class="panel" id="panel">${panelHTML()}</main></div>
-  <div class="launchbar"><button class="btn" data-act="save">Save spaceship</button><button class="btn yellow big" data-act="review">Crew check and launch</button></div></div></div>`;
+  <div class="launchbar" id="launchbar">${launchbarHTML()}</div></div></div>`;
+}
+function launchbarHTML() {
+  const S2 = st.easy ? STEPS_EASY : STEPS_PRO, i = S2.findIndex(x => x[0] === st.step);
+  const prev = i > 0 ? S2[i - 1] : null, next = i >= 0 && i < S2.length - 1 ? S2[i + 1] : null;
+  return `${prev ? `<button class="btn ghost prevbtn" data-act="step" data-s="${prev[0]}" aria-label="Back to ${prev[1]}">${A.icon('back')}<span>${prev[1]}</span></button>` : ''}
+    ${next ? `<button class="btn purple nextbtn" data-act="step" data-s="${next[0]}"><span>Next: ${next[1]}</span>${A.icon('next')}</button>` : ''}
+    <span class="grow"></span>
+    <button class="btn savebtn" data-act="save" aria-label="Save spaceship">${A.icon('save')}<span>Save spaceship</span></button>
+    <button class="btn yellow launchbtn" data-act="review">Crew check and launch</button>`;
 }
 function panelHTML() {
   const s = st.step;
@@ -6142,6 +6962,7 @@ function panelHTML() {
   return ({ brief: pBrief, where: pOrbit, rocket: pLaunch, craft: pCraft, tools: pPayload, radio: pComms, plan: pProgram }[s] || pBrief)();
 }
 function nextStepBtn() {
+  return ''; // the Next button now lives in the bar at the bottom of the screen
   const S2 = st.easy ? STEPS_EASY : STEPS_PRO, steps = S2.map(x => x[0]), i = steps.indexOf(st.step);
   return i >= 0 && i < steps.length - 1 ? `<div class="row"><button class="btn purple" data-act="step" data-s="${steps[i + 1]}">Next: ${S2[i + 1][1]}</button></div>` : '<div class="row"><button class="btn yellow" data-act="review">Crew check and launch</button></div>';
 }
@@ -6161,7 +6982,7 @@ function kBrief() {
     <label class="f" for="f-name"><span>Name your spaceship</span><input type="text" id="f-name" data-bind="name" data-kind="text" value="${esc(st.design.name)}" maxlength="24"></label>
     <h3>Goals</h3>${goalsList()}
     <h3>Crew secret goals</h3><p class="small muted">Each job has a secret wish. Make them come true for bonus points!</p>${secretCards()}
-    ${range('program.opsYears', 'How long should the mission last?', 0.5, 6, 0.5, v => `${v} years`)}
+    ${range('program.opsYears', 'How long should the mission last?', 0.5, 6, 0.5, v => v === 1 ? '1 year' : `${v} years`)}
     ${nextStepBtn()}`;
 }
 function kWhere() {
@@ -6344,7 +7165,7 @@ function review() {
   const owners = roleOwners(), allGo = ROLE_KEYS.every(r => st.signoff[r] === 'go');
   app.innerHTML = topBar() + `<div class="stack" style="gap:16px">
     <div class="spread"><div><h2 class="on-space">${st.easy ? 'Crew check! Is everyone ready?' : 'Flight readiness review: Go or No-Go?'}</h2><p class="on-space muted">Each crew member checks their part. Red problems mean that person can't say "Ready" yet.</p></div>
-      <div class="row"><button class="btn" data-act="toBuild">Back to building</button><button class="btn yellow big" data-act="launchProgram" ${allGo ? '' : 'disabled'}>Launch!</button></div></div>
+</div>
     <div class="meters flat">${gaugesHTML()}</div>
     <div class="checkgrid">${ROLE_KEYS.map(r => {
       const iss = ev.issues.filter(i => i.role === r), bl = iss.filter(i => i.sev === 'block');
@@ -6356,6 +7177,8 @@ function review() {
         <div class="row"><button class="btn ${v === 'go' ? 'green' : ''}" data-act="vote" data-role="${r}" data-v="go" ${bl.length ? 'disabled' : ''}>I'm ready</button><button class="btn" data-act="vote" data-role="${r}" data-v="nogo">Not yet</button>${st.mode === 'coop' ? `<button class="btn small" data-act="reveal" data-role="${r}">${st.reveal[r] ? 'Hide' : 'Peek'}</button>` : ''}</div></div>`;
     }).join('')}</div>
     ${ev.blocking ? `<div class="talk">${A.orbi(80, 'worried')}<div class="bubble">We still have ${ev.blocking} problem${ev.blocking > 1 ? 's' : ''}. Go back and fix ${ev.blocking > 1 ? 'them' : 'it'}, or ask me to help. <div class="row">${canFix() ? '<button class="btn green small" data-act="fixit">Fix it for me, Orbi</button>' : '<span class="small">This one needs you! Look for the step with a red dot.</span>'}<button class="btn small" data-act="toBuild">Back to building</button></div></div></div>` : `<div class="talk">${A.orbi(80, 'wow')}<div class="bubble">The spaceship looks great! When every crew member says "I'm ready", press Launch!<div class="row"><button class="btn green small" data-act="allGo">Everyone is ready</button></div></div></div>`}
+    <div class="launchbar"><button class="btn ghost prevbtn" data-act="toBuild">${A.icon('back')}<span>Back to building</span></button>${!allGo && !ev.blocking ? '<button class="btn green" data-act="allGo">Everyone is ready</button>' : ''}<span class="grow"></span>
+      <button class="btn yellow big launchbtn" data-act="launchProgram" ${allGo ? '' : 'disabled'}>Launch!</button></div>
   </div>`;
 }
 
@@ -6377,7 +7200,8 @@ function flight() {
   flightStars = flightStars || Array.from({ length: 180 }, () => [Math.random(), Math.random(), Math.random() * 1.6 + 0.4, Math.random() * 6]);
   app.innerHTML = topBar() + `<div class="flight"><div>
     <div class="window" id="win"><canvas id="cv" aria-label="Mission view"></canvas><div class="hud" id="hud"></div><div class="livebox" id="livebox"></div><div id="overlay"></div><div id="bannerBox"></div></div>
-    <div class="controls"><button class="btn yellow winbtn" data-act="cabin" id="winBtn"><svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true"><circle cx="24" cy="24" r="19" fill="#2EC5FF" stroke="#221E52" stroke-width="4"/><path d="M12 30c6-8 12-2 18-8s8 2 8 2" stroke="#5ED37A" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M15 15a12 12 0 0 1 9-4" stroke="#fff" stroke-width="3.5" stroke-linecap="round" fill="none"/></svg><span>Look out the window</span></button>${[[0, 'pause', 'Pause'], [1, 'slow', 'Slow'], [2, 'play', 'Play'], [3, 'ff', 'Fast']].map(([v, ic, l]) => `<button class="btn ${st.speed === v ? 'yellow' : 'ghost'} iconbtn" data-act="speed" data-v="${v}" aria-label="${l}" aria-pressed="${st.speed === v}">${A.icon(ic)}</button>`).join('')}
+    <div class="controls"><button class="btn yellow winbtn" data-act="cabin" id="winBtn">${A.icon('window')}<span>Look out the window</span></button>
+      <div class="speedseg" role="group" aria-label="Time speed">${[[0, 'pause', 'Pause'], [1, 'slow', 'Slow'], [2, 'play', 'Play'], [3, 'ff', 'Fast']].map(([v, ic, l]) => `<button class="${st.speed === v ? 'on' : ''}" data-act="speed" data-v="${v}" aria-pressed="${st.speed === v}">${A.icon(ic)}<span>${l}</span></button>`).join('')}</div>
       <label class="check"><input type="checkbox" id="autoEv" ${st.auto ? 'checked' : ''}><span>Orbi handles small problems</span></label><button class="btn ghost small" data-act="skip">Skip to the end</button><span id="endBtn"></span></div>
     <div class="card" style="margin-top:12px"><h3>Mission diary</h3><div class="log" id="log" aria-live="polite"></div></div></div>
     <aside class="dash" id="dash"></aside></div><div id="modal"></div>`;
@@ -6450,8 +7274,17 @@ function hearts(s0, d, ev2) {
   return [H(st.easy ? 'Brain' : 'Computer', s0.obc >= (d.obc.dual ? 2 : 1) ? 2 : s0.obc > 0 ? 1 : 0), H('Pointing', s0.adcsMode === 'ok' ? 2 : s0.adcsMode === 'hybrid' ? 1 : 0), H('Radio', s0.comms > 0 ? (s0.dishStuck ? 1 : 2) : 0), H('Power', s0.arr < 1 || s0.batt < 0.8 ? 1 : 2),
     E.PROP[d.prop.type].isp ? H('Engine', s0.prop ? (s0.propKg > ev2.mass.prop * 0.1 ? 2 : 1) : 0) : '', ...s0.instr.map(ii => H(st.easy ? (KID.instr[ii.id] || '').split(' (')[0] : E.INS[ii.id].name.split(',')[0], ii.h > 0.9 ? 2 : ii.h > 0 ? 1 : 0))].join('');
 }
+function winBtnState(m) {
+  const b = document.getElementById('winBtn'); if (!b) return;
+  const state = m.phase === 'dev' || m.phase === 'review' || m.phase === 'launch' ? 'wait' : m.over && m.outcome && m.outcome.kind !== 'complete' ? 'gone' : 'open';
+  if (b.dataset.state === state) return; b.dataset.state = state;
+  b.hidden = state === 'gone'; b.classList.toggle('wait', state === 'wait'); b.setAttribute('aria-disabled', String(state === 'wait'));
+  b.querySelector('span').textContent = state === 'wait' ? 'Window opens after launch' : 'Look out the window';
+  if (state === 'open' && m.phase !== 'done') { b.classList.remove('nudge'); void b.offsetWidth; b.classList.add('nudge'); }
+}
 function updateDash() {
   const m = mission, d = m.d, ev2 = m.ev, dash = document.getElementById('dash'); if (!dash) return;
+  winBtnState(m);
   const phaseName = { dev: 'Building', review: 'Money check', launch: 'Launch', cruise: 'Cruising', capture: 'Arriving', aero: 'Air-braking', ops: 'Doing science', done: 'Finished' }[m.phase];
   const s0 = m.sats ? (m.sats.find(s => s.alive) || m.sats[0]) : null;
   const spent = m.costNow(), alive = m.sats ? m.sats.filter(s => s.alive).length : ev2.N;
@@ -6606,7 +7439,7 @@ function drawOrbit(ctx, w, h, t, dt) {
   const rB = Math.max(12, body.R * scale), tiltY = 0.42;
   const cols = { earth: ['#3FA7FF', '#1D5FA8'], moon: ['#E2E0EE', '#8C88A8'], mars: ['#F0683C', '#9C3414'], jupiter: ['#F2C38B', '#B07A3E'] }[dest];
   const gl = ctx.createRadialGradient(cx, cy, rB * 0.9, cx, cy, rB * 1.35); gl.addColorStop(0, cols[0] + '55'); gl.addColorStop(1, cols[0] + '00'); ctx.fillStyle = gl; ctx.fillRect(cx - rB * 1.4, cy - rB * 1.4, rB * 2.8, rB * 2.8);
-  ctx.fillStyle = 'rgba(0,0,0,.28)'; ctx.fillRect(cx, cy - rB, w, rB * 2);
+  { const sh = ctx.createLinearGradient(cx, 0, cx + rB * 3.2, 0); sh.addColorStop(0, 'rgba(0,0,0,.28)'); sh.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = sh; ctx.beginPath(); ctx.moveTo(cx, cy - rB); ctx.lineTo(cx + rB * 3.2, cy - rB * 0.75); ctx.lineTo(cx + rB * 3.2, cy + rB * 0.75); ctx.lineTo(cx, cy + rB); ctx.closePath(); ctx.fill(); } // the planet's shadow, fading away
   const ecc = apo ? (apo - (body.R + o.h)) / (apo + body.R + o.h) : dest === 'jupiter' ? 1 - o.o.rp / o.o.a : 0;
   const aPx = rOrbit * scale, bPx = aPx * Math.sqrt(1 - ecc * ecc) * tiltY, cPx = aPx * ecc;
   ctx.beginPath(); ctx.ellipse(cx + cPx, cy, aPx, bPx, 0, Math.PI, 2 * Math.PI); ctx.strokeStyle = 'rgba(255,201,60,.45)'; ctx.lineWidth = 2.5; ctx.setLineDash([7, 7]); ctx.stroke(); ctx.setLineDash([]);
@@ -6804,22 +7637,27 @@ function atlas() {
     <div class="atlas">${HK.CARDS.map(c => cardHTML(c)).join('')}</div>
     <div class="row"><button class="btn" data-act="back">Back</button></div></div>`;
 }
-function newQuiz() { const paid = prof.quizDay !== today(); st.quiz = { qs: HK.quizRound(paid ? +today().replace(/-/g, '') : Math.floor(Math.random() * 1e6) + 1), i: 0, right: 0, picked: null, paid }; }
+function newQuiz() { const paid = prof.quizDay !== today(), topic = st.quizTopic || 'all'; st.quiz = { qs: HK.quizRound(paid && topic === 'all' ? +today().replace(/-/g, '') : Math.floor(Math.random() * 1e6) + 1, 5, topic, st.easy), i: 0, right: 0, picked: null, paid, topic }; }
+const topicRow = () => `<div class="topics" role="group" aria-label="Quiz topic">${HK.QUIZ_TOPICS.map(([k, n]) => `<button class="topicchip" data-act="quizTopic" data-v="${k}" aria-pressed="${(st.quizTopic || 'all') === k}">${n}</button>`).join('')}</div>`;
 function quiz() {
   sky.setDim(0.3); if (!st.quiz) newQuiz(); const Q = st.quiz;
   if (Q.i >= Q.qs.length) {
     const all = Q.right === Q.qs.length;
     app.innerHTML = topBar() + `<div class="stack quiz" style="gap:16px"><div class="talk">${A.orbi(100, all ? 'wow' : 'happy')}<div class="bubble">${all ? 'Perfect score! You really know your space stuff!' : `You got ${Q.right} of ${Q.qs.length} right. Every space expert started just like you!`}</div></div>
-      <div class="card stack" style="text-align:center;justify-items:center"><div class="bigstars">${Q.qs.map((_, i) => A.star(i < Q.right)).join('')}</div>
+      <div class="card stack" style="text-align:center;justify-items:center"><div class="bigstars">${Q.qs.map((_, i) => A.star(i < Q.right).replace('rgba(255,255,255,.22)', '#E4E1FA').replace('rgba(255,255,255,.35)', '#C9C5FF')).join('')}</div>
       ${Q.paid ? `<p class="big">+${Q.right * 10} Stardust and +${Q.right * 10} XP</p>` : '<p class="muted">This was a practice round. Come back tomorrow to win more Stardust.</p>'}
+      <p class="muted">Pick a topic for the next round:</p>${topicRow()}
       <div class="row center"><button class="btn green big" data-act="quizAgain">Play again</button><button class="btn" data-act="home">Home</button></div></div></div>`;
     if (all) A.confetti(120);
     return;
   }
   const q = Q.qs[Q.i], P = Q.picked;
-  app.innerHTML = topBar() + `<div class="stack quiz" style="gap:16px"><div class="spread"><h2 class="on-space">Orbi's quiz</h2><span class="on-space">Question ${Q.i + 1} of ${Q.qs.length}</span></div>
+  app.innerHTML = topBar() + `<div class="stack quiz" style="gap:16px"><div class="spread"><h2 class="on-space">Orbi's quiz</h2><span class="on-space qcount">Question ${Q.i + 1} of ${Q.qs.length}</span></div>
+    ${Q.i === 0 && P == null ? topicRow() : ''}
+    <div class="qdots" aria-hidden="true">${Q.qs.map((_, k) => `<i class="${k < Q.i ? 'done' : k === Q.i ? 'now' : ''}"></i>`).join('')}</div>
     <div class="talk">${A.orbi(96, P == null ? 'happy' : P === q.ok ? 'wow' : 'worried')}<div class="bubble qtext">${esc(q.q)}</div></div>
     <div class="answers">${q.opts.map((o, i) => `<button class="answer ${P == null ? '' : i === q.ok ? 'right' : i === P ? 'wrong' : 'dim'}" data-act="answer" data-i="${i}" ${P == null ? '' : 'disabled'}><i>${'ABC'[i]}</i><span>${esc(o)}</span></button>`).join('')}</div>
+    ${P == null ? '' : `<div class="card qfact">${A.icon('bulb')}<div><b>Did you know?</b><p>${esc(q.fact || '')}</p></div></div>`}
     ${P == null ? '' : `<div class="card row spread"><b class="${P === q.ok ? 'status-goal' : 'status-fail'}">${P === q.ok ? 'Yes! That\'s right!' : `Not quite. The answer is: ${esc(q.opts[q.ok])}`}</b><button class="btn yellow big" data-act="quizNext">${Q.i + 1 < Q.qs.length ? 'Next question' : 'See my score'}</button></div>`}</div>`;
   if (P != null) { const b = app.querySelector('[data-act="quizNext"]'); if (b) b.focus(); }
 }
@@ -6940,7 +7778,7 @@ function openCabin() {
   if (m.phase === 'dev' || m.phase === 'launch') { toast('The window opens after launch.'); A.sfx.bad(); return; }
   if (m.over && m.outcome && m.outcome.kind !== 'complete') { toast('We lost contact with the spacecraft. The window is dark.'); A.sfx.bad(); return; }
   const info = cabinInfo(m), before = st.speed;
-  setSpeed(0); A.sfx.pick();
+  setSpeed(0); A.sfx.pick(); A.music.mood('calm');
   const got = new Set((m.album || []).flatMap(p => p.goals || []));
   CABIN.openWindow(Object.assign({}, info, {
     got: [...got],
@@ -6949,10 +7787,10 @@ function openCabin() {
       m.album = m.album || []; ph.n = m.album.length + 1; m.album.push(ph); if (m.album.length > 24) m.album.shift();
       if (ph.fresh.length) { prof.dust += 3 * ph.fresh.length; saveProf(); }
     },
-    onClose: () => { setSpeed(before || 2); updateDash(); const b = document.getElementById('winBtn'); if (b) b.classList.remove('nudge'); },
+    onClose: () => { A.music.mood('adventure'); setSpeed(before || 2); updateDash(); const b = document.getElementById('winBtn'); if (b) b.classList.remove('nudge'); },
   }));
 }
-function setSpeed(v) { st.speed = v; document.querySelectorAll('[data-act="speed"]').forEach(b => { const on = +b.dataset.v === st.speed; b.setAttribute('aria-pressed', String(on)); b.className = `btn ${on ? 'yellow' : 'ghost'} iconbtn`; }); }
+function setSpeed(v) { st.speed = v; document.querySelectorAll('[data-act="speed"]').forEach(b => { const on = +b.dataset.v === st.speed; b.setAttribute('aria-pressed', String(on)); b.classList.toggle('on', on); }); }
 function photoTick(now) {
   // no more random photos: Orbi reminds you to look out of the window
   const m = mission; if (!m || m.phase !== 'ops' || m.over || !photoState) return;
@@ -7122,7 +7960,7 @@ function custom() {
       <h3>4. How good must it be?</h3>
       ${Object.keys(c.goals).map(k => { const L = E.REQLIB[k]; if (!L || !L.slider) return ''; const sl = L.slider;
         return `<label class="f" for="cg-${k}"><span>${esc(CGOAL[k][1])}<b id="cgv-${k}">${esc(slText(sl, c.goals[k]))}</b></span><input type="range" id="cg-${k}" data-cgoal="${k}" min="${sl.log ? 0 : sl.min}" max="${sl.log ? 1000 : sl.max}" step="${sl.log ? 1 : sl.step || 1}" value="${slPos(sl, c.goals[k])}"></label>`; }).join('')}
-      <label class="f" for="cyears"><span>The spacecraft must work for at least<b id="cyv">${c.years} years</b></span><input type="range" id="cyears" data-cnum="years" min="1" max="8" step="1" value="${c.years}"></label>
+      <label class="f" for="cyears"><span>The spacecraft must work for at least<b id="cyv">${c.years === 1 ? '1 year' : c.years + ' years'}</b></span><input type="range" id="cyears" data-cnum="years" min="1" max="8" step="1" value="${c.years}"></label>
       <h3>5. Money and time</h3>
       <label class="f" for="cbudget"><span>Money for the whole mission<b id="cbv">${money(c.budget)}</b></span><input type="range" id="cbudget" data-cnum="budget" data-log="1" min="0" max="1000" step="1" value="${slPos(bsl, c.budget)}"></label>
       <p class="small muted">${esc(CHINT[c.dest])}</p>
@@ -7134,7 +7972,7 @@ function customInput(el) {
   const c = st.cspec; if (!c) return;
   if (el.dataset.cfield === 'name') { c.name = el.value.slice(0, 24); return; }
   if (el.dataset.cgoal) { const k = el.dataset.cgoal, sl = E.REQLIB[k].slider; c.goals[k] = slVal(sl, +el.value); const o = document.getElementById('cgv-' + k); if (o) o.textContent = T(slText(sl, c.goals[k])); return; }
-  if (el.dataset.cnum === 'years') { c.years = +el.value; document.getElementById('cyv').textContent = T(`${c.years} years`); }
+  if (el.dataset.cnum === 'years') { c.years = +el.value; document.getElementById('cyv').textContent = T(c.years === 1 ? '1 year' : `${c.years} years`); }
   if (el.dataset.cnum === 'year') { c.year = +el.value; document.getElementById('cyrv').textContent = c.year; }
   if (el.dataset.cnum === 'budget') { const B = E.CUSTOM_BASE[c.dest]; c.budget = slVal({ min: B.budget[0], max: B.budget[1], log: true }, +el.value); c.budget = c.budget < 10 ? +c.budget.toFixed(1) : Math.round(c.budget); document.getElementById('cbv').textContent = T(money(c.budget)); }
 }
@@ -7323,8 +8161,12 @@ const QUIET = ['cdest', 'cgoal', 'setLang', 'langMenu', 'viewPhoto', 'storyTap',
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]'); if (!el) return; const a = el.dataset.act;
   const H = {
-    home: () => go('home'), map: () => { st.versus = null; go('map'); }, hangar: () => { compareSel = []; go('hangar'); }, board: () => go('board'), badges: () => go('badges'), learn: () => go('learn'),
+    home: () => { closeSound(); if (st.screen === 'build') confirmLeave('home'); else go('home'); }, map: () => { st.versus = null; go('map'); }, hangar: () => { compareSel = []; go('hangar'); }, board: () => go('board'), badges: () => go('badges'), learn: () => go('learn'),
     back: () => go(SIDE.includes(prevScreen) ? 'home' : prevScreen),
+    goBack: () => goBack(),
+    menu: () => { if (document.getElementById('soundpop')) closeSound(); else menuPop(); },
+    saveLeave: () => { saveDesign(); const t = el.dataset.to; closeModal(); if (t === 'map') st.versus = null; go(t); },
+    leaveNow: () => { const t = el.dataset.to; closeModal(); if (t === 'map') st.versus = null; go(t); },
     play: () => { if (!store.get('seenStory', false)) { st.storyI = 0; go('story'); } else go('map'); },
     story: () => { st.storyI = 0; go('story'); }, howto: () => go('howto'),
     storyTap: () => storyNext(false), storyNext: () => storyNext(true), storySkip: () => { store.set('seenStory', true); go('howto'); },
@@ -7349,6 +8191,7 @@ document.addEventListener('click', e => {
     answer: () => { const Q = st.quiz; if (!Q || Q.picked != null) return; Q.picked = +el.dataset.i; if (Q.picked === Q.qs[Q.i].ok) { Q.right += 1; A.sfx.good(); A.confetti(40); } else A.sfx.bad(); quiz(); },
     quizNext: () => { const Q = st.quiz; Q.i += 1; Q.picked = null; if (Q.i >= Q.qs.length && Q.paid && prof.quizDay !== today()) { prof.quizDay = today(); prof.dust += Q.right * 10; prof.xp += Q.right * 10; saveProf(); A.sfx.coin(); } quiz(); },
     quizAgain: () => { newQuiz(); quiz(); },
+    quizTopic: () => { st.quizTopic = el.dataset.v; A.sfx.pick(); if (st.quiz && st.quiz.i > 0 && st.quiz.i < st.quiz.qs.length) return; newQuiz(); quiz(); },
     easy: () => { st.easy = el.dataset.v === '1'; store.set('easy', st.easy);
       if (st.screen === 'flight') { document.querySelectorAll('.mode-pill button').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.v === '1') === st.easy))); return; }
       if (st.screen === 'build') { if (!(st.easy ? STEPS_EASY : STEPS_PRO).some(s => s[0] === st.step)) st.step = st.easy ? (st.step === 'craft' ? 'body' : st.step === 'plan' ? 'brief' : 'brief') : (['body', 'power'].includes(st.step) ? 'craft' : 'brief'); if (st.easy) autoEngineer('hidden'); }
@@ -7357,8 +8200,8 @@ document.addEventListener('click', e => {
     setLang: () => setLang(el.dataset.v),
     soundMenu: () => { if (document.getElementById('soundpop')) closeSound(); else soundMenu(); },
     closeSound: () => closeSound(),
-    music: () => { setMusic(!musicWanted()); if (document.getElementById('soundpop')) soundMenu(); },
-    sound: () => { A.muted = !A.muted; store.set('muted', A.muted); if (!A.muted) A.sfx.coin(); if (document.getElementById('soundpop')) soundMenu(); },
+    music: () => { setMusic(!musicWanted()); const mp = document.querySelector('.menupop'); if (mp) menuPop(); else if (document.getElementById('soundpop')) soundMenu(); },
+    sound: () => { A.muted = !A.muted; store.set('muted', A.muted); if (!A.muted) A.sfx.coin(); if (document.querySelector('.menupop')) menuPop(); else if (document.getElementById('soundpop')) soundMenu(); },
     continue: () => { const s = store.get('session', null); if (!s) return; if (s.scenId === 'custom') { if (!s.spec) return; st.custom = E.buildCustom(s.spec); } Object.assign(st, { daily: null, chal: null, scenId: s.scenId, diff: s.diff, mode: 'solo', versus: null, seed: s.seed || 2027 }); st.design = s.design; st.step = 'brief'; st.iteration = 1; st.reviewRounds = 1; dealCards(st.seed); go('build'); },
     brief: () => { st.daily = null; st.chal = null; st.custom = null; briefing(el.dataset.id); }, closeModal: () => closeModal(),
     diff: () => { st.diff = el.dataset.v; document.querySelectorAll('[data-act="diff"]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === st.diff))); const n = document.getElementById('diffNote'); if (n) n.textContent = diffNote(); },
@@ -7367,7 +8210,7 @@ document.addEventListener('click', e => {
     addP: () => { const l = st.mode === 'coop' ? st.players : st.teams; l.push(st.mode === 'coop' ? `Player ${l.length + 1}` : ['Team Apollo', 'Team Artemis', 'Team Gemini', 'Team Mercury'][l.length] || `Team ${l.length + 1}`); crew(); },
     rmP: () => { (st.mode === 'coop' ? st.players : st.teams).pop(); crew(); },
     startTeam: () => { const sd = document.getElementById('seed'); st.seed = Math.max(1, parseInt(sd && sd.value, 10) || 2027); st.versus = st.mode === 'versus' ? { teams: st.teams.map(n => ({ name: n, result: null })), idx: 0 } : null; beginBuild(); },
-    step: () => { st.step = el.dataset.s; A.sfx.click(); if (st.screen !== 'build') return go('build'); document.getElementById('panel').innerHTML = panelHTML(); document.getElementById('steps').innerHTML = stepsHTML(); document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+    step: () => { st.step = el.dataset.s; A.sfx.click(); if (st.screen !== 'build') return go('build'); document.getElementById('panel').innerHTML = panelHTML(); document.getElementById('steps').innerHTML = stepsHTML(); const lb = document.getElementById('launchbar'); if (lb) lb.innerHTML = launchbarHTML(); const tgt = window.innerWidth < 1100 ? document.getElementById('steps') : document.getElementById('panel'), r = tgt.getBoundingClientRect(); if (r.top < 70 || r.top > window.innerHeight * 0.45) tgt.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
     set: () => { const path = el.dataset.path; let v = el.dataset.val; if (['nSats', 'power.rtgs'].includes(path) || (!isNaN(+v) && /alt|area|batt|dish|rf/.test(path))) v = +v; setPath(path, v); A.sfx.pick(); refresh(true); },
     preset: () => { st.design.orbit.alt = +el.dataset.alt; const inc = el.dataset.inc; st.design.orbit.inc = inc === 'sso' ? 'sso' : +inc; setPath('orbit.alt', st.design.orbit.alt); A.sfx.pick(); refresh(true); },
     toggleIns: () => { const id = el.dataset.id, p = st.design.payload; st.design.payload = p.includes(id) ? p.filter(x => x !== id) : [...p, id]; A.sfx.pick(); refresh(true); },
@@ -7378,7 +8221,7 @@ document.addEventListener('click', e => {
     vote: () => { st.signoff[el.dataset.role] = el.dataset.v; if (el.dataset.v === 'nogo') { st.reviewRounds += 1; A.sfx.bad(); } else A.sfx.pick(); review(); },
     allGo: () => { ROLE_KEYS.forEach(r => { if (!ev.issues.some(i => i.role === r && i.sev === 'block')) st.signoff[r] = 'go'; }); A.sfx.good(); review(); },
     launchProgram: () => startFlight(),
-    speed: () => { st.speed = +el.dataset.v; document.querySelectorAll('[data-act="speed"]').forEach(b => { const on = +b.dataset.v === st.speed; b.setAttribute('aria-pressed', String(on)); b.className = `btn ${on ? 'yellow' : 'ghost'} iconbtn`; }); },
+    speed: () => setSpeed(+el.dataset.v),
     skip: () => { if (!mission) return; mission.autoResolve = true; let g = 0; while (!mission.over && g++ < 100000) { if (mission.pending) { const p = mission.pending; let best = 0; p.options.forEach((o, i) => { if ((o.q || 0) > (p.options[best].q || 0)) best = i; }); mission.choose(best); continue; } if (mission.phase === 'launch') { launchAnim = { t: 20, rolled: true, ticks: 3, sound: true }; mission.doLaunch(); continue; } mission.advance(30); } mission.autoResolve = st.auto; document.getElementById('modal').innerHTML = ''; updateDash(); },
     choose: () => { mission.choose(+el.dataset.i); document.getElementById('modal').innerHTML = ''; A.sfx.click(); updateDash(); },
     report: () => { cancelAnimationFrame(raf); go('report'); },
@@ -7426,7 +8269,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeModal(); closeSound(); }
   if ((e.key === 'm' || e.key === 'M') && !/INPUT|TEXTAREA|SELECT/.test((e.target.tagName || '')) && !e.ctrlKey && !e.metaKey) { setMusic(!musicWanted()); toast(musicWanted() ? 'Music on' : 'Music off'); }
 });
-document.addEventListener('pointerdown', e => { const p = document.getElementById('soundpop'); if (p && !p.contains(e.target) && !e.target.closest('.soundbtn, .langbtn')) closeSound(); });
+document.addEventListener('pointerdown', e => { const p = document.getElementById('soundpop'); if (p && !p.contains(e.target) && !e.target.closest('.soundbtn, .langbtn, .menubtn')) closeSound(); });
 document.addEventListener('input', e => { if (e.target.dataset && (e.target.dataset.cfield || e.target.dataset.cgoal || e.target.dataset.cnum)) { customInput(e.target); return; } if (e.target.id === 'musVol') { const v = +e.target.value / 100; A.music.setVolume(v); store.set('vol', v); if (v > 0 && !musicWanted()) setMusic(true); } });
 
 /* ---------- live-update support ---------- */
